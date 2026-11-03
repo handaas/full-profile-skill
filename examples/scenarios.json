@@ -1,0 +1,118 @@
+{
+  "skill": "full-profile-skill",
+  "kind": "verified_positive_examples",
+  "run_id": "live-replaced-20261027",
+  "source_manifest": "../test-records/scenarios-20261027.json",
+  "scenarios": [
+    {
+      "id": "01-investment-profile",
+      "title": "上市科技企业综合画像",
+      "user_request": "为宁德时代新能源科技股份有限公司生成工商、风险、经营、创新、品牌、市场、舆情和人才八维画像。",
+      "purpose": "形成投资研究的统一事实底稿。",
+      "args": [
+        "--enterprise",
+        "宁德时代新能源科技股份有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "八个维度的覆盖状态清楚",
+        "综合评分不掩盖缺失维度",
+        "创新与市场交叉结论有双域证据",
+        "主体名称一致"
+      ],
+      "limitations": [
+        "不是证券投资建议",
+        "报告不包含未公开财务预测"
+      ]
+    },
+    {
+      "id": "02-high-risk-profile",
+      "title": "高风险地产企业全面体检",
+      "user_request": "对恒大地产集团有限公司做全面体检，重点观察风险、经营和市场活动之间的关系。",
+      "purpose": "支持高风险交易的初步筛查。",
+      "args": [
+        "--enterprise",
+        "恒大地产集团有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "风险事件分类可追溯",
+        "风险与经营事实不作无依据因果推断",
+        "空创新或招聘维度不被补零",
+        "综合定位体现重大风险"
+      ],
+      "limitations": [
+        "公开事件可能有时间延迟",
+        "不替代法律和财务专项尽调"
+      ]
+    },
+    {
+      "id": "03-ip-brand-leader",
+      "title": "创新品牌企业画像",
+      "user_request": "分析华为技术有限公司的专利、商标、经营、市场和人才协同情况。",
+      "purpose": "评估创新与品牌资产的结构匹配。",
+      "args": [
+        "--enterprise",
+        "华为技术有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "专利和商标证据分别展示",
+        "创新品牌协同使用可见数据",
+        "风险健康度不等于无风险",
+        "各章节空值处理一致"
+      ],
+      "limitations": [
+        "知识产权数量不等于权利质量",
+        "集团关联主体数据可能不完全归集"
+      ]
+    },
+    {
+      "id": "05-hiring-expansion",
+      "title": "人才扩张型企业画像",
+      "user_request": "对比亚迪股份有限公司做八维画像，重点检查招聘扩张与经营、风险和创新是否匹配。",
+      "purpose": "支持快速扩张企业的综合评估。",
+      "args": [
+        "--enterprise",
+        "比亚迪股份有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "招聘趋势与经营趋势时间口径清楚",
+        "扩张风险判断引用多个域",
+        "专利数量不直接等于研发效率",
+        "综合结论区分事实和推断"
+      ],
+      "limitations": [
+        "招聘岗位不等于实际员工净增长",
+        "产能和现金流不在本报告直接验证"
+      ]
+    },
+    {
+      "id": "07-platform-company",
+      "title": "平台企业综合画像",
+      "user_request": "分析京东科技信息技术有限公司的经营、创新、品牌、舆情和招聘信号。",
+      "purpose": "为平台型企业合作评估建立基线。",
+      "args": [
+        "--enterprise",
+        "京东科技信息技术有限公司",
+        "--keyword-type",
+        "name"
+      ],
+      "expected_checks": [
+        "企业主体解析准确",
+        "品牌与关联集团不无依据混同",
+        "舆情与风险维度分别展示",
+        "证据不足维度降低置信度"
+      ],
+      "limitations": [
+        "关联集团数据可能无法完整归属",
+        "平台业务细分表现不在统一报告中拆分"
+      ]
+    }
+  ]
+}

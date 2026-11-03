@@ -1,0 +1,1197 @@
+[
+  {
+    "tool": "patent_bigdata_patent_stats",
+    "domain": "patent",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 1.02,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "patentDivAppLegalStat",
+      "patentTypeAppTimeStat",
+      "patentTypePubTimeStat",
+      "patentTypeStat"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "patentDivAppLegalStat[0].patentCount",
+        "value": 47
+      },
+      {
+        "path": "patentDivAppLegalStat[1].patentCount",
+        "value": 1161
+      },
+      {
+        "path": "patentDivAppLegalStat[2].patentCount",
+        "value": 1983
+      },
+      {
+        "path": "patentDivAppLegalStat[3].patentCount",
+        "value": 44
+      },
+      {
+        "path": "patentDivAppLegalStat[4].patentCount",
+        "value": 495
+      },
+      {
+        "path": "patentTypeAppTimeStat[0].inventionAppPatentCount",
+        "value": 1
+      },
+      {
+        "path": "patentTypeAppTimeStat[1].appearanceDesignPatentCount",
+        "value": 4
+      },
+      {
+        "path": "patentTypeAppTimeStat[1].inventionAppPatentCount",
+        "value": 11
+      },
+      {
+        "path": "patentTypeAppTimeStat[1].inventionLicPatentCount",
+        "value": 5
+      },
+      {
+        "path": "patentTypeAppTimeStat[1].utilityModelPatentCount",
+        "value": 2
+      },
+      {
+        "path": "patentTypeAppTimeStat[2].appearanceDesignPatentCount",
+        "value": 52
+      },
+      {
+        "path": "patentTypeAppTimeStat[2].inventionAppPatentCount",
+        "value": 273
+      },
+      {
+        "path": "patentTypeAppTimeStat[2].inventionLicPatentCount",
+        "value": 143
+      },
+      {
+        "path": "patentTypeAppTimeStat[2].utilityModelPatentCount",
+        "value": 43
+      },
+      {
+        "path": "patentTypeAppTimeStat[3].appearanceDesignPatentCount",
+        "value": 71
+      },
+      {
+        "path": "patentTypeAppTimeStat[3].inventionAppPatentCount",
+        "value": 272
+      },
+      {
+        "path": "patentTypeAppTimeStat[3].inventionLicPatentCount",
+        "value": 133
+      },
+      {
+        "path": "patentTypeAppTimeStat[3].utilityModelPatentCount",
+        "value": 62
+      },
+      {
+        "path": "patentTypeAppTimeStat[4].appearanceDesignPatentCount",
+        "value": 49
+      },
+      {
+        "path": "patentTypeAppTimeStat[4].inventionAppPatentCount",
+        "value": 399
+      },
+      {
+        "path": "patentTypeAppTimeStat[4].inventionLicPatentCount",
+        "value": 241
+      },
+      {
+        "path": "patentTypeAppTimeStat[4].utilityModelPatentCount",
+        "value": 30
+      },
+      {
+        "path": "patentTypePubTimeStat[0].appearanceDesignPatentCount",
+        "value": 1
+      },
+      {
+        "path": "patentTypePubTimeStat[1].inventionAppPatentCount",
+        "value": 1
+      },
+      {
+        "path": "patentTypePubTimeStat[2].appearanceDesignPatentCount",
+        "value": 23
+      },
+      {
+        "path": "patentTypePubTimeStat[2].inventionAppPatentCount",
+        "value": 79
+      },
+      {
+        "path": "patentTypePubTimeStat[2].inventionLicPatentCount",
+        "value": 1
+      },
+      {
+        "path": "patentTypePubTimeStat[2].utilityModelPatentCount",
+        "value": 9
+      },
+      {
+        "path": "patentTypePubTimeStat[3].appearanceDesignPatentCount",
+        "value": 60
+      },
+      {
+        "path": "patentTypePubTimeStat[3].inventionAppPatentCount",
+        "value": 370
+      },
+      {
+        "path": "patentTypePubTimeStat[3].inventionLicPatentCount",
+        "value": 22
+      },
+      {
+        "path": "patentTypePubTimeStat[3].utilityModelPatentCount",
+        "value": 47
+      },
+      {
+        "path": "patentTypePubTimeStat[4].appearanceDesignPatentCount",
+        "value": 69
+      },
+      {
+        "path": "patentTypePubTimeStat[4].inventionAppPatentCount",
+        "value": 291
+      },
+      {
+        "path": "patentTypePubTimeStat[4].inventionLicPatentCount",
+        "value": 59
+      },
+      {
+        "path": "patentTypePubTimeStat[4].utilityModelPatentCount",
+        "value": 69
+      },
+      {
+        "path": "patentTypeStat.appearanceDesignPatentCount",
+        "value": 266
+      },
+      {
+        "path": "patentTypeStat.inventionAppPatentCount",
+        "value": 2772
+      },
+      {
+        "path": "patentTypeStat.inventionLicPatentCount",
+        "value": 1008
+      },
+      {
+        "path": "patentTypeStat.utilityModelPatentCount",
+        "value": 167
+      }
+    ],
+    "response_sha256": "44c9625a701fed3c40313becf9ea48e1edf9beca401485862e8a716d25629678"
+  },
+  {
+    "tool": "news_bigdata_news_stats",
+    "domain": "news",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 1.287,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "newsSentimentStats",
+      "newsSentimentTrend",
+      "sentimentLabelList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "newsSentimentStats.negative",
+        "value": 7
+      },
+      {
+        "path": "newsSentimentStats.neutral",
+        "value": 157
+      },
+      {
+        "path": "newsSentimentStats.positive",
+        "value": 229
+      },
+      {
+        "path": "newsSentimentStats.unknown",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.positive",
+        "value": 12
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.positive",
+        "value": 6
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.positive",
+        "value": 3
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.positive",
+        "value": 1
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.negative",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.positive",
+        "value": 1
+      }
+    ],
+    "response_sha256": "8fb4b3dd3dcb1644b66d95a934dd90a1820ee3f908bb8d882eda8e45d9671039"
+  },
+  {
+    "tool": "trademark_bigdata_trademark_profile",
+    "domain": "trademark",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 3.232,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "tmCount",
+      "tmInvalidNumber",
+      "tmNumberThisYear",
+      "tmTypeList",
+      "tmValidNumber",
+      "tmStatusList",
+      "tmStatusStat"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "tmCount",
+        "value": 16
+      },
+      {
+        "path": "tmInvalidNumber",
+        "value": 0
+      },
+      {
+        "path": "tmNumberThisYear",
+        "value": 0
+      },
+      {
+        "path": "tmValidNumber",
+        "value": 16
+      },
+      {
+        "path": "tmStatusStat.初审公告",
+        "value": 3
+      },
+      {
+        "path": "tmStatusStat.商标已注册",
+        "value": 12
+      },
+      {
+        "path": "tmStatusStat.等待实质审查",
+        "value": 1
+      }
+    ],
+    "response_sha256": "fbd9b2d864d10cc6231c4751a21ee1555ea4d7985f6cb803bfb8675dc64016d8"
+  },
+  {
+    "tool": "trademark_bigdata_trademark_stats",
+    "domain": "trademark",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 3.233,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "tmAppTimeStat",
+      "tmRegTimeStat",
+      "tmTypeStats",
+      "tmStatusStat"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "tmTypeStats[0].count",
+        "value": 4
+      },
+      {
+        "path": "tmTypeStats[1].count",
+        "value": 3
+      },
+      {
+        "path": "tmTypeStats[2].count",
+        "value": 3
+      },
+      {
+        "path": "tmTypeStats[3].count",
+        "value": 2
+      },
+      {
+        "path": "tmTypeStats[4].count",
+        "value": 2
+      },
+      {
+        "path": "tmStatusStat[0].count",
+        "value": 12
+      },
+      {
+        "path": "tmStatusStat[1].count",
+        "value": 1
+      },
+      {
+        "path": "tmStatusStat[2].count",
+        "value": 3
+      }
+    ],
+    "response_sha256": "a6bf9ec78000fd5f5cd7760f9655e84c9442973e509d186415eae48fe4630ac5"
+  },
+  {
+    "tool": "bid_bigdata_bidding_info",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 4.24,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 20,
+    "reported_total": 804,
+    "numeric_evidence": [
+      {
+        "path": "resultList[1].projectAmount",
+        "value": 240.0
+      },
+      {
+        "path": "resultList[3].projectAmount",
+        "value": 81.2
+      },
+      {
+        "path": "total",
+        "value": 804
+      }
+    ],
+    "response_sha256": "7d21163334171de8d7ab861ebaf56c1ec785f071a96293c0fdb881ec09a2a727"
+  },
+  {
+    "tool": "bid_bigdata_bid_win_stats",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 4.241,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "winbidAmountStatList",
+      "winbidAreaStat",
+      "winbidStatList",
+      "winbidTrend"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "winbidAmountStatList[0].percent",
+        "value": 3.51
+      },
+      {
+        "path": "winbidAmountStatList[0].count",
+        "value": 13
+      },
+      {
+        "path": "winbidAmountStatList[1].percent",
+        "value": 9.46
+      },
+      {
+        "path": "winbidAmountStatList[1].count",
+        "value": 35
+      },
+      {
+        "path": "winbidAmountStatList[2].percent",
+        "value": 14.86
+      },
+      {
+        "path": "winbidAmountStatList[2].count",
+        "value": 55
+      },
+      {
+        "path": "winbidAmountStatList[3].percent",
+        "value": 45.14
+      },
+      {
+        "path": "winbidAmountStatList[3].count",
+        "value": 167
+      },
+      {
+        "path": "winbidAmountStatList[4].percent",
+        "value": 27.03
+      },
+      {
+        "path": "winbidAmountStatList[4].count",
+        "value": 100
+      },
+      {
+        "path": "winbidAreaStat[0].count",
+        "value": 124
+      },
+      {
+        "path": "winbidAreaStat[1].count",
+        "value": 98
+      },
+      {
+        "path": "winbidAreaStat[2].count",
+        "value": 12
+      },
+      {
+        "path": "winbidAreaStat[3].count",
+        "value": 1
+      },
+      {
+        "path": "winbidAreaStat[4].count",
+        "value": 43
+      },
+      {
+        "path": "winbidStatList[0].count",
+        "value": 17
+      },
+      {
+        "path": "winbidStatList[0].percent",
+        "value": 3.04
+      },
+      {
+        "path": "winbidStatList[1].count",
+        "value": 13
+      },
+      {
+        "path": "winbidStatList[1].percent",
+        "value": 2.33
+      },
+      {
+        "path": "winbidStatList[2].count",
+        "value": 13
+      },
+      {
+        "path": "winbidStatList[2].percent",
+        "value": 2.33
+      },
+      {
+        "path": "winbidStatList[3].count",
+        "value": 9
+      },
+      {
+        "path": "winbidStatList[3].percent",
+        "value": 1.61
+      },
+      {
+        "path": "winbidStatList[4].count",
+        "value": 8
+      },
+      {
+        "path": "winbidStatList[4].percent",
+        "value": 1.43
+      },
+      {
+        "path": "winbidTrend[0].count",
+        "value": 143
+      },
+      {
+        "path": "winbidTrend[1].count",
+        "value": 165
+      },
+      {
+        "path": "winbidTrend[2].count",
+        "value": 99
+      },
+      {
+        "path": "winbidTrend[3].count",
+        "value": 84
+      },
+      {
+        "path": "winbidTrend[4].count",
+        "value": 58
+      }
+    ],
+    "response_sha256": "39a4ff05f27d4cf4be1e90ec93e0a0a09906645bc78e4e62bc931e673b8e781f"
+  },
+  {
+    "tool": "recruitment_employer_profile",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 5.375,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "benefitList",
+      "businessTags",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary",
+      "recruitingBusinessKeyWords",
+      "recruitingCities",
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingPositionKeyWords",
+      "recruitingTypes",
+      "truncatedFields"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 3790
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 22784.2528665029
+      },
+      {
+        "path": "recruitingCurrentCount",
+        "value": 31.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 31.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 31
+      },
+      {
+        "path": "truncatedFields.businessTags.total",
+        "value": 61
+      },
+      {
+        "path": "truncatedFields.businessTags.returned",
+        "value": 50
+      }
+    ],
+    "response_sha256": "e9b0662cc3acdad245c8d2ca598bac143908a37b0c7a58619b1215f4d9d3dd7e"
+  },
+  {
+    "tool": "recruitment_trend",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 5.378,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingCurrentCount",
+        "value": 31.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 31.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 31
+      },
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 3790
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 22784.2528665029
+      }
+    ],
+    "response_sha256": "86570fa06378f11fb5eb845b43703f6a653e2a6b512871fbfc7cf8b7460e3d0e"
+  },
+  {
+    "tool": "operation_insight_business_scale",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 5.675,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "annualTurnover",
+      "enterpriseScale"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "d5070d41cb43bca00a2dfac7746003c7aa2210199fb11ba4b27a2521d6930c9c"
+  },
+  {
+    "tool": "operation_insight_financing_info",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 5.677,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "fpFinancingCount",
+      "fpFinancingList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "fpFinancingCount",
+        "value": 1
+      }
+    ],
+    "response_sha256": "0600960d74bff1aa808d41c2acbe95cd19c627afa8527ef0a203099137845c09"
+  },
+  {
+    "tool": "operation_insight_company_trends",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 5.679,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "isExpandNewCityIn3Month",
+      "isExpandNewCityIn6Month",
+      "isExpandNewCityIn12Month",
+      "isDiffAreaWinBidIn3Month",
+      "isDiffAreaWinBidIn6Month",
+      "isDiffAreaWinBidIn12Month",
+      "qualificationIn12MonthList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "isExpandNewCityIn3Month",
+        "value": 1
+      },
+      {
+        "path": "isExpandNewCityIn6Month",
+        "value": 1
+      },
+      {
+        "path": "isExpandNewCityIn12Month",
+        "value": 1
+      },
+      {
+        "path": "isDiffAreaWinBidIn3Month",
+        "value": 1
+      },
+      {
+        "path": "isDiffAreaWinBidIn6Month",
+        "value": 1
+      },
+      {
+        "path": "isDiffAreaWinBidIn12Month",
+        "value": 1
+      }
+    ],
+    "response_sha256": "45cb90d21f1a7df2eba93236cfc1deb2eae994bc101517e348476ad875a50e36"
+  },
+  {
+    "tool": "operation_insight_enterprise_rankings",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name",
+      "pageSize": 10
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 5.688,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  },
+  {
+    "tool": "enterprise_get_enterprise_base_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "京东科技信息技术有限公司"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 6.852,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "base_info",
+      "desc",
+      "tag"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "base_info.payAmountCount.amount",
+        "value": 300000000.0
+      },
+      {
+        "path": "base_info.regCapital.value",
+        "value": 300000000.0
+      },
+      {
+        "path": "tag.isAnomaly",
+        "value": 0
+      },
+      {
+        "path": "tag.isHighTechEnterprise",
+        "value": 1
+      }
+    ],
+    "response_sha256": "c1fe0404a88a8872edf435725e68d684990199f0441c76dd076648fecdd7f574"
+  },
+  {
+    "tool": "enterprise_get_enterprise_holder_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "京东科技信息技术有限公司"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 6.857,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "holderList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "holderList[0].payAmount.value",
+        "value": 300000000.0
+      },
+      {
+        "path": "holderList[0].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "holderList[0].subscriptionDetail.amount",
+        "value": 300000000.0
+      }
+    ],
+    "response_sha256": "fb10e4215427108216a115d7971e967d2445031a3731dafd71c46fabeb0874e8"
+  },
+  {
+    "tool": "enterprise_get_enterprise_invest_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "京东科技信息技术有限公司"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 6.859,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 9,
+    "reported_total": 9,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[0].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[0].regCapital.value",
+        "value": 1000000.0
+      },
+      {
+        "path": "resultList[0].subscriptionAmount.value",
+        "value": 1000000.0
+      },
+      {
+        "path": "resultList[1].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[1].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[1].regCapital.value",
+        "value": 51000000.0
+      },
+      {
+        "path": "resultList[1].subscriptionAmount.value",
+        "value": 51000000.0
+      },
+      {
+        "path": "resultList[2].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[2].ratio",
+        "value": 0.0523243847
+      },
+      {
+        "path": "resultList[2].regCapital.value",
+        "value": 32067510.0
+      },
+      {
+        "path": "resultList[2].subscriptionAmount.value",
+        "value": 126600.0
+      },
+      {
+        "path": "resultList[3].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[3].ratio",
+        "value": 0.0414134953
+      },
+      {
+        "path": "resultList[3].regCapital.value",
+        "value": 14233149.0
+      },
+      {
+        "path": "resultList[3].subscriptionAmount.value",
+        "value": 591808.0
+      },
+      {
+        "path": "resultList[4].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[4].ratio",
+        "value": 0.0317328637
+      },
+      {
+        "path": "resultList[4].regCapital.value",
+        "value": 3218604.0
+      },
+      {
+        "path": "resultList[4].subscriptionAmount.value",
+        "value": 90350.0
+      },
+      {
+        "path": "total",
+        "value": 9
+      }
+    ],
+    "response_sha256": "76d5c5ed088cac70a59d6c41afec169bb4073bef8bcc721f1219cb0a539c6408"
+  },
+  {
+    "tool": "enterprise_get_enterprise_main_person_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "京东科技信息技术有限公司"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 6.861,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 3,
+    "reported_total": 3,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].relatedEnterpriseCurrentNum",
+        "value": 7
+      },
+      {
+        "path": "resultList[0].relatedEnterpriseHistoryNum",
+        "value": 2
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseCurrentNum",
+        "value": 9
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseHistoryNum",
+        "value": 3
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseCurrentNum",
+        "value": 8
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseHistoryNum",
+        "value": 6
+      },
+      {
+        "path": "total",
+        "value": 3
+      }
+    ],
+    "response_sha256": "24a2316a37f6f9abe3a8e95f6527cda953188b9b57334bd0e1a9e0ce97173df4"
+  },
+  {
+    "tool": "enterprise_risk_insight_score",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 9.244,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "risk_level",
+      "risk_reason",
+      "risk_score"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "risk_score",
+        "value": 100
+      }
+    ],
+    "response_sha256": "9da0e86852b583e5772c221911e07d05e6159fc4b33dc2f76371efa1faa458ad"
+  },
+  {
+    "tool": "risk_insight_court_hearings",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 9.258,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 20,
+    "reported_total": 33,
+    "numeric_evidence": [
+      {
+        "path": "total",
+        "value": 33
+      }
+    ],
+    "response_sha256": "a5dcfe5092d35e4b0b69121bf8f1f71a4ffb2c3b186bd1959bf3ee2f8e22c6d5"
+  },
+  {
+    "tool": "risk_insight_litigation_risk_profile",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 9.26,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "caKaitingList",
+      "caKaitingTotal",
+      "caLianTotal",
+      "caList",
+      "caTotal",
+      "edTotal",
+      "enforcementList",
+      "enforcementTotal",
+      "jdList",
+      "jdTotal",
+      "limitedTotal"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "caKaitingTotal",
+        "value": 33
+      },
+      {
+        "path": "caLianTotal",
+        "value": 0
+      },
+      {
+        "path": "caTotal",
+        "value": 20
+      },
+      {
+        "path": "edTotal",
+        "value": 0
+      },
+      {
+        "path": "enforcementTotal",
+        "value": 3
+      },
+      {
+        "path": "jdTotal",
+        "value": 9
+      },
+      {
+        "path": "limitedTotal",
+        "value": 0
+      }
+    ],
+    "response_sha256": "7bbceb4b05df8aa45e27e6e5f9272485ef55f8ab6fba1e6a9679a3de0a3d9aff"
+  },
+  {
+    "tool": "risk_insight_penalties",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 9.262,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  },
+  {
+    "tool": "risk_insight_business_anomalies",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 9.265,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  },
+  {
+    "tool": "risk_insight_consumption_restrictions",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 9.267,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  },
+  {
+    "tool": "risk_insight_chattel_mortgage",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "京东科技信息技术有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069129526620000",
+    "elapsed_seconds": 9.27,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  }
+]

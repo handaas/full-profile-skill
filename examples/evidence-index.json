@@ -1,0 +1,95 @@
+{
+  "run_id": "live-replaced-20261027",
+  "cases": [
+    {
+      "skill": "full-profile-skill",
+      "id": "01-investment-profile",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "0c70e46bfe3a8f1403e06a5382fc8e6f0d97b845f48c4ee7175c09fe0c87b21a",
+        "report.html": "457bbe0d6e5d0e5c80682a8b8d1d712b7f518634c46f73ab55c037f2adde3882",
+        "report.md": "46e163793968542854dbc3a8e6501ed6ee770fc3df6b016d5934f1446543b23a",
+        "calls.json": "1121f025b2c2c14454f83ec77abe2f017b8d4da8642d40c4ecd268305e73591b",
+        "result.json": "af816daddf1650a6b3d7f4d3f8d5420ef68597fe5d8ca53476aa2e83dbca6d40",
+        "audit.json": "98a238f6417c40992a028788466ef662f6a3315332ebbbf8266fd6320b83f5cf",
+        "acceptance.json": "8b0c8a0cea10cdbae83ccb391085b64dbbc561268aaa19975673298ef418b85e",
+        "business-review.json": "c9b59912d82508da07cfb7b3c80484bcc3dab7b23c63cd669b617622610064de",
+        "browser-check.json": "797d09ef5d6f333e6e5f5e88d3f8bc4d2f3f5cc8ca7fbed9ed9404fe2fc48cb3"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/01-investment-profile.md"
+    },
+    {
+      "skill": "full-profile-skill",
+      "id": "02-high-risk-profile",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "e3b7bb9d3e6cfa7f67e52d1301cfc3e8f375b0924aa2d57933e754ab74cc8f62",
+        "report.html": "03b476a72ed1ad94fe3cd0fd2cab4a22c73b687da25e517bf91852f9bdc48257",
+        "report.md": "53d4ba00199587557596ccb32b009c6c94a3d62fb82392838ea0bc78475afd2a",
+        "calls.json": "ccb24a892db1a3ae6199888045a46735afaba3bc02409b8738a5e9a1bc523390",
+        "result.json": "5377d46bba7e098cfa474eeb17976e07a5ba5916654f69b6025acb9cd57e3ffa",
+        "audit.json": "cffb4580b4bebcd0deb80bbfc420fcaf916f58264c82ae64294c24a81e734493",
+        "acceptance.json": "9c075706ebae0a13fa70ea8136b0eb0e36f78fa6377786f250e253de223a0229",
+        "business-review.json": "53e04e5bd2fe772ce8790ea731054f1087366fd4ae25334b3d9913db39920086",
+        "browser-check.json": "434f47e9f32879855a163107d4619c1f24efc69280541144835403f33befc9ad"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/02-high-risk-profile.md"
+    },
+    {
+      "skill": "full-profile-skill",
+      "id": "03-ip-brand-leader",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "51ba13ba7244e390518100df98d7685fa127455ba0a1f50f5dc9f947b6de955e",
+        "report.html": "12bc5943f9c6206b58275d8703e6ce71e33cb99b8152dd5df03b81902ff4a1b9",
+        "report.md": "1340ae9b9f5d7fd12aea0e9a1e0323b23c5349822ca48710889c6b47ba12dd18",
+        "calls.json": "97d3e1525f65986ef8368ed853c1503ad76bb6fd44968b377d506562f873f19c",
+        "result.json": "23af464b41ae33c673ce39c61a40e72b30c3acb13f1d23b447880454276b9536",
+        "audit.json": "85cca62eb20f47db7196c73aa667ec53e4b761cb75c08a0d8a6fe2eb5eeec024",
+        "acceptance.json": "23868c506767b937bbe7df9338bc2a172f2af3e0556f9784d5d3c457a578ccd6",
+        "business-review.json": "0fa7a915cf058f22037c75aa559735453f3a5aabf88cfb3fb04b196d4f0a82e5",
+        "browser-check.json": "38df94331b54c6b33554d5224ce5c8c95fa7bc1c4a53dd485de83c2a60dd17b4"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/03-ip-brand-leader.md"
+    },
+    {
+      "skill": "full-profile-skill",
+      "id": "05-hiring-expansion",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "1413519c5d42332bb5727cc4f7149304ee8cc4ea913fb2f98a0dd723133b6046",
+        "report.html": "d213fccc5daac1dca2f53ab8f86217218cb409249b0fff2acb2426c758fcad59",
+        "report.md": "64acffb8144dfcadd2648e3419b8be1ee9f84a0b366a4a72f2a0cb8be29e20be",
+        "calls.json": "05054bb8fc0bc34da6cdc1bbde41405eb6e9766bb8901d4a34bad682583ebea8",
+        "result.json": "9ae04fec7bbb3843f70e00efefaba77a09022336593d9b3fba5ad1132ab054ac",
+        "audit.json": "5dea3c528c5872fade72ba4e4a37e3ed5d30018f7957178ea06756e402a75d74",
+        "acceptance.json": "dd79b5513e49a6cfb01df951b90c9e4e12757f612dad9108a46c2c9e6b58c69a",
+        "business-review.json": "a1ba233bdb639a1510f0c8e3cf943a655e3bec7bb01bf9e9f1d5f692ffc7cd24",
+        "browser-check.json": "5a0d53bc76e73e8dcebe8508d2e664842ce6458803f47550ec9dd99f6cb0ec46"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/05-hiring-expansion.md"
+    },
+    {
+      "skill": "full-profile-skill",
+      "id": "07-platform-company",
+      "status": "passed",
+      "positive_business_pass": true,
+      "files_sha256": {
+        "report.json": "e64fd096e6b25a35bf6b2745e3dabdaf4d08f90f8a591383421782a14da0f894",
+        "report.html": "6ef98d55a01a266433379d2cb686ed6a52b8ed04e924c85abc0203ce82d5d744",
+        "report.md": "666c6e2d0587b73d94b6e76862d6d64346983c7a1a64f7d9fd3c5bdc10a0225a",
+        "calls.json": "e116a8f38f5baf654730e96cb0d4fbedd4131df08b0a6c96ccf5028a71162cab",
+        "result.json": "25c21bf49f0d26b2e9f5cda792d6cbed539946f94ae50a648cdc350909b71f86",
+        "audit.json": "b4e7dfa8db48dd23dbbd06c11a556cc3f8fb3c2fbb30408b6a82f4932ad920b2",
+        "acceptance.json": "455ef77639772f3fc1315d0f88b93838a956d8dd2c3a4c9ed11b6dce234439cd",
+        "business-review.json": "3a33c316c27e1ebda43d4fa4432c6ed58b273aa74f447298149639094efdcb31",
+        "browser-check.json": "f02f3c16f80f55d2b11dd510f31f420d3b4f80cbc0dd7178dbd81c6ec0091a7d"
+      },
+      "audit_record": "../../test-records/live-replaced-20261027/07-platform-company.md"
+    }
+  ]
+}

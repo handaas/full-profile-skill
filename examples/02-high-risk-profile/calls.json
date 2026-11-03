@@ -1,0 +1,1213 @@
+[
+  {
+    "tool": "news_bigdata_news_stats",
+    "domain": "news",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 1.572,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "newsSentimentStats",
+      "newsSentimentTrend",
+      "sentimentLabelList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "newsSentimentStats.negative",
+        "value": 1019
+      },
+      {
+        "path": "newsSentimentStats.neutral",
+        "value": 1811
+      },
+      {
+        "path": "newsSentimentStats.positive",
+        "value": 328
+      },
+      {
+        "path": "newsSentimentStats.unknown",
+        "value": 6
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.negative",
+        "value": 4
+      },
+      {
+        "path": "newsSentimentTrend[0].stats.positive",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.negative",
+        "value": 5
+      },
+      {
+        "path": "newsSentimentTrend[1].stats.positive",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.negative",
+        "value": 1
+      },
+      {
+        "path": "newsSentimentTrend[2].stats.positive",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.negative",
+        "value": 1
+      },
+      {
+        "path": "newsSentimentTrend[3].stats.positive",
+        "value": 0
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.negative",
+        "value": 2
+      },
+      {
+        "path": "newsSentimentTrend[4].stats.positive",
+        "value": 0
+      }
+    ],
+    "response_sha256": "56c23b76ffcfd9c3178a958c4877e730e69d1b2951b7c32247f1eba03ff8c2e7"
+  },
+  {
+    "tool": "patent_bigdata_patent_stats",
+    "domain": "patent",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 1.632,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "patentDivAppLegalStat",
+      "patentTypeAppTimeStat",
+      "patentTypePubTimeStat",
+      "patentTypeStat"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "patentDivAppLegalStat[0].patentCount",
+        "value": 2
+      },
+      {
+        "path": "patentTypeAppTimeStat[0].appearanceDesignPatentCount",
+        "value": 2
+      },
+      {
+        "path": "patentTypePubTimeStat[0].appearanceDesignPatentCount",
+        "value": 2
+      },
+      {
+        "path": "patentTypeStat.appearanceDesignPatentCount",
+        "value": 2
+      }
+    ],
+    "response_sha256": "8d918b03568b372a19e0dd573ac4be9e6071a6201bd75d51289663e55ee67c35"
+  },
+  {
+    "tool": "recruitment_employer_profile",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 2.32,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "benefitList",
+      "businessTags",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary",
+      "recruitingBusinessKeyWords",
+      "recruitingCities",
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingPositionKeyWords",
+      "recruitingTypes",
+      "truncatedFields"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 30475
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 15304.2904321228
+      },
+      {
+        "path": "recruitingCurrentCount",
+        "value": 1220.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 1220.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 159
+      },
+      {
+        "path": "truncatedFields.recruitingCities.total",
+        "value": 217
+      },
+      {
+        "path": "truncatedFields.recruitingCities.returned",
+        "value": 50
+      }
+    ],
+    "response_sha256": "eb413b14d46f9b00483f7e1baad171876cf7fa8d287227f6685ca71631f237fd"
+  },
+  {
+    "tool": "recruitment_trend",
+    "domain": "recruitment",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 2.321,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "recruitingCurrentCount",
+      "recruitingLastThreeMonthCount",
+      "recruitingLastThreeMonthNo",
+      "recruitingAvgUpdate",
+      "recruitingAvgWorkingSalary"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "recruitingCurrentCount",
+        "value": 1220.0
+      },
+      {
+        "path": "recruitingLastThreeMonthCount",
+        "value": 1220.0
+      },
+      {
+        "path": "recruitingLastThreeMonthNo",
+        "value": 159
+      },
+      {
+        "path": "recruitingAvgUpdate",
+        "value": 30475
+      },
+      {
+        "path": "recruitingAvgWorkingSalary",
+        "value": 15304.2904321228
+      }
+    ],
+    "response_sha256": "b65ff72a08f13d1367c25ea8a63790d960bc5e421c2fb09aef1dc1341e98273b"
+  },
+  {
+    "tool": "bid_bigdata_bid_win_stats",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 3.03,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "winbidAmountStatList",
+      "winbidAreaStat",
+      "winbidStatList",
+      "winbidTrend"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "winbidAmountStatList[0].percent",
+        "value": 25.0
+      },
+      {
+        "path": "winbidAmountStatList[0].count",
+        "value": 6
+      },
+      {
+        "path": "winbidAmountStatList[1].percent",
+        "value": 25.0
+      },
+      {
+        "path": "winbidAmountStatList[1].count",
+        "value": 6
+      },
+      {
+        "path": "winbidAmountStatList[2].percent",
+        "value": 8.33
+      },
+      {
+        "path": "winbidAmountStatList[2].count",
+        "value": 2
+      },
+      {
+        "path": "winbidAmountStatList[3].percent",
+        "value": 20.83
+      },
+      {
+        "path": "winbidAmountStatList[3].count",
+        "value": 5
+      },
+      {
+        "path": "winbidAmountStatList[4].percent",
+        "value": 20.83
+      },
+      {
+        "path": "winbidAmountStatList[4].count",
+        "value": 5
+      },
+      {
+        "path": "winbidAreaStat[0].count",
+        "value": 4
+      },
+      {
+        "path": "winbidAreaStat[1].count",
+        "value": 4
+      },
+      {
+        "path": "winbidAreaStat[2].count",
+        "value": 21
+      },
+      {
+        "path": "winbidAreaStat[3].count",
+        "value": 1
+      },
+      {
+        "path": "winbidAreaStat[4].count",
+        "value": 1
+      },
+      {
+        "path": "winbidStatList[0].count",
+        "value": 4
+      },
+      {
+        "path": "winbidStatList[0].percent",
+        "value": 14.29
+      },
+      {
+        "path": "winbidStatList[1].count",
+        "value": 3
+      },
+      {
+        "path": "winbidStatList[1].percent",
+        "value": 10.71
+      },
+      {
+        "path": "winbidStatList[2].count",
+        "value": 2
+      },
+      {
+        "path": "winbidStatList[2].percent",
+        "value": 7.14
+      },
+      {
+        "path": "winbidStatList[3].count",
+        "value": 2
+      },
+      {
+        "path": "winbidStatList[3].percent",
+        "value": 7.14
+      },
+      {
+        "path": "winbidStatList[4].count",
+        "value": 2
+      },
+      {
+        "path": "winbidStatList[4].percent",
+        "value": 7.14
+      },
+      {
+        "path": "winbidTrend[0].count",
+        "value": 14
+      },
+      {
+        "path": "winbidTrend[1].count",
+        "value": 1
+      },
+      {
+        "path": "winbidTrend[2].count",
+        "value": 3
+      },
+      {
+        "path": "winbidTrend[3].count",
+        "value": 4
+      },
+      {
+        "path": "winbidTrend[4].count",
+        "value": 2
+      }
+    ],
+    "response_sha256": "34584e604948e00149ad3c089a709b5bde52aa0b090c71aa341dc22fe99261e0"
+  },
+  {
+    "tool": "bid_bigdata_bidding_info",
+    "domain": "bidding",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 3.031,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 20,
+    "reported_total": 68,
+    "numeric_evidence": [
+      {
+        "path": "resultList[2].projectAmount",
+        "value": 154.09
+      },
+      {
+        "path": "resultList[3].projectAmount",
+        "value": 370.0
+      },
+      {
+        "path": "resultList[4].projectAmount",
+        "value": 12183.0
+      },
+      {
+        "path": "total",
+        "value": 68
+      }
+    ],
+    "response_sha256": "738626e63b7c3c9c52c9125d42cfcdaecac10dba381786ba2f25bd18797592cb"
+  },
+  {
+    "tool": "operation_insight_business_scale",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 4.818,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "annualTurnover",
+      "enterpriseScale"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "7c05a4d3bcd474b7963faa2bcced12f8a2be0b1d908d323dfe3d894da56b4354"
+  },
+  {
+    "tool": "operation_insight_financing_info",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 4.82,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "fpFinancingCount",
+      "fpFinancingList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "fpFinancingCount",
+        "value": 12
+      }
+    ],
+    "response_sha256": "5502ea7d912725cc9883bc97e8768add60ee659c8f39f46cd3d250a8cb7a1dd1"
+  },
+  {
+    "tool": "trademark_bigdata_trademark_profile",
+    "domain": "trademark",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 4.823,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "tmCount",
+      "tmInvalidNumber",
+      "tmNumberThisYear",
+      "tmTypeList",
+      "tmValidNumber",
+      "tmStatusList",
+      "tmStatusStat"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "tmCount",
+        "value": 1433
+      },
+      {
+        "path": "tmInvalidNumber",
+        "value": 830
+      },
+      {
+        "path": "tmNumberThisYear",
+        "value": 0
+      },
+      {
+        "path": "tmValidNumber",
+        "value": 603
+      },
+      {
+        "path": "tmStatusStat.商标已注册",
+        "value": 775
+      },
+      {
+        "path": "tmStatusStat.商标无效",
+        "value": 611
+      },
+      {
+        "path": "tmStatusStat.撤销/无效宣告申请审查中",
+        "value": 8
+      },
+      {
+        "path": "tmStatusStat.等待实质审查",
+        "value": 38
+      },
+      {
+        "path": "tmStatusStat.驳回复审中",
+        "value": 1
+      }
+    ],
+    "response_sha256": "3ddb3a32db9930f6d58cce1f587d8d0f6fe87248cd3b14de155faa579831d49c"
+  },
+  {
+    "tool": "operation_insight_company_trends",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 4.824,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "isStaffExpandIn12Month",
+      "isExpandNewCityIn12Month"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "isStaffExpandIn12Month",
+        "value": 1
+      },
+      {
+        "path": "isExpandNewCityIn12Month",
+        "value": 1
+      }
+    ],
+    "response_sha256": "53bdf351ec273b3c74093e50d8c741ea8e02cfd12980b1d8d1f07cd8b0829989"
+  },
+  {
+    "tool": "trademark_bigdata_trademark_stats",
+    "domain": "trademark",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 4.826,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "tmAppTimeStat",
+      "tmRegTimeStat",
+      "tmTypeStats",
+      "tmStatusStat"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "tmAppTimeStat[0].count",
+        "value": 2
+      },
+      {
+        "path": "tmAppTimeStat[1].count",
+        "value": 13
+      },
+      {
+        "path": "tmAppTimeStat[2].count",
+        "value": 371
+      },
+      {
+        "path": "tmAppTimeStat[3].count",
+        "value": 16
+      },
+      {
+        "path": "tmAppTimeStat[4].count",
+        "value": 10
+      },
+      {
+        "path": "tmRegTimeStat[0].count",
+        "value": 126
+      },
+      {
+        "path": "tmRegTimeStat[1].count",
+        "value": 27
+      },
+      {
+        "path": "tmRegTimeStat[2].count",
+        "value": 90
+      },
+      {
+        "path": "tmRegTimeStat[3].count",
+        "value": 279
+      },
+      {
+        "path": "tmRegTimeStat[4].count",
+        "value": 11
+      },
+      {
+        "path": "tmTypeStats[0].count",
+        "value": 314
+      },
+      {
+        "path": "tmTypeStats[1].count",
+        "value": 263
+      },
+      {
+        "path": "tmTypeStats[2].count",
+        "value": 101
+      },
+      {
+        "path": "tmTypeStats[3].count",
+        "value": 93
+      },
+      {
+        "path": "tmTypeStats[4].count",
+        "value": 62
+      },
+      {
+        "path": "tmStatusStat[0].count",
+        "value": 775
+      },
+      {
+        "path": "tmStatusStat[1].count",
+        "value": 611
+      },
+      {
+        "path": "tmStatusStat[2].count",
+        "value": 38
+      },
+      {
+        "path": "tmStatusStat[3].count",
+        "value": 8
+      },
+      {
+        "path": "tmStatusStat[4].count",
+        "value": 1
+      }
+    ],
+    "response_sha256": "59f1320742b2ae7a0d84b167d10a503e90ac4fc37dc39880d45687080b3026eb"
+  },
+  {
+    "tool": "operation_insight_enterprise_rankings",
+    "domain": "operation",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name",
+      "pageSize": 10
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 4.827,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 10,
+    "reported_total": 11,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].rankingListYear",
+        "value": 2016
+      },
+      {
+        "path": "resultList[0].rank",
+        "value": 113
+      },
+      {
+        "path": "resultList[1].rankingListYear",
+        "value": 2016
+      },
+      {
+        "path": "resultList[1].rank",
+        "value": 15
+      },
+      {
+        "path": "resultList[2].rankingListYear",
+        "value": 2015
+      },
+      {
+        "path": "resultList[2].rank",
+        "value": 129
+      },
+      {
+        "path": "resultList[3].rankingListYear",
+        "value": 2015
+      },
+      {
+        "path": "resultList[3].rank",
+        "value": 14
+      },
+      {
+        "path": "resultList[4].rankingListYear",
+        "value": 2014
+      },
+      {
+        "path": "resultList[4].rank",
+        "value": 145
+      },
+      {
+        "path": "total",
+        "value": 11
+      }
+    ],
+    "response_sha256": "6f5bac2cd8fcb62fe9fcb78658ed76e6a4c809b7b18d1a1c327f2ef574abc3b8"
+  },
+  {
+    "tool": "enterprise_get_enterprise_base_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "恒大地产集团有限公司"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 6.433,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "base_info",
+      "desc",
+      "tag"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "base_info.payAmountCount.amount",
+        "value": 3939796387.0
+      },
+      {
+        "path": "base_info.regCapital.value",
+        "value": 3939796387.0
+      },
+      {
+        "path": "tag.isAnomaly",
+        "value": 0
+      }
+    ],
+    "response_sha256": "b1603847e9a20921b0e9387f9171dc40b5dd132e354ed86a8c7a09640ea4f48c"
+  },
+  {
+    "tool": "enterprise_get_enterprise_holder_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "恒大地产集团有限公司"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 6.435,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "holderList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "holderList[0].payAmount.value",
+        "value": 2375130909.0
+      },
+      {
+        "path": "holderList[0].ratio",
+        "value": 0.602856
+      },
+      {
+        "path": "holderList[0].subscriptionDetail.amount",
+        "value": 2375130909.0
+      },
+      {
+        "path": "holderList[1].payAmount.value",
+        "value": 277979001.0
+      },
+      {
+        "path": "holderList[1].ratio",
+        "value": 0.070557
+      },
+      {
+        "path": "holderList[1].subscriptionDetail.amount",
+        "value": 277979001.0
+      },
+      {
+        "path": "holderList[2].payAmount.value",
+        "value": 189393939.0
+      },
+      {
+        "path": "holderList[2].ratio",
+        "value": 0.048072
+      },
+      {
+        "path": "holderList[2].subscriptionDetail.amount",
+        "value": 189393939.0
+      },
+      {
+        "path": "holderList[3].payAmount.value",
+        "value": 185319334.00000003
+      },
+      {
+        "path": "holderList[3].ratio",
+        "value": 0.047038
+      },
+      {
+        "path": "holderList[3].subscriptionDetail.amount",
+        "value": 185319334.00000003
+      },
+      {
+        "path": "holderList[4].payAmount.value",
+        "value": 107323232.0
+      },
+      {
+        "path": "holderList[4].ratio",
+        "value": 0.027241
+      },
+      {
+        "path": "holderList[4].subscriptionDetail.amount",
+        "value": 107323232.0
+      }
+    ],
+    "response_sha256": "d4aeed9b24b341ffe7b32e3e9ae75b4b7b1f866089a527359195928af2e3a238"
+  },
+  {
+    "tool": "enterprise_get_enterprise_invest_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "恒大地产集团有限公司"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 6.438,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 50,
+    "reported_total": 195,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[0].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[0].regCapital.value",
+        "value": 1167875378.0
+      },
+      {
+        "path": "resultList[0].subscriptionAmount.value",
+        "value": 1167875378.0
+      },
+      {
+        "path": "resultList[1].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[1].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[1].regCapital.value",
+        "value": 7000000000.0
+      },
+      {
+        "path": "resultList[1].subscriptionAmount.value",
+        "value": 7000000000.0
+      },
+      {
+        "path": "resultList[2].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[2].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[2].regCapital.value",
+        "value": 80000000.0
+      },
+      {
+        "path": "resultList[2].subscriptionAmount.value",
+        "value": 80000000.0
+      },
+      {
+        "path": "resultList[3].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[3].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[3].regCapital.value",
+        "value": 315000000.0
+      },
+      {
+        "path": "resultList[3].subscriptionAmount.value",
+        "value": 315000000.0
+      },
+      {
+        "path": "resultList[4].isListed",
+        "value": 0
+      },
+      {
+        "path": "resultList[4].ratio",
+        "value": 1.0
+      },
+      {
+        "path": "resultList[4].regCapital.value",
+        "value": 461100000.0
+      },
+      {
+        "path": "resultList[4].subscriptionAmount.value",
+        "value": 461100000.0
+      },
+      {
+        "path": "total",
+        "value": 195
+      }
+    ],
+    "response_sha256": "d55cf557a16733a9f274e29fa3284dde1bc8e590a0b0193299b6071f7ec351f0"
+  },
+  {
+    "tool": "enterprise_get_enterprise_main_person_info",
+    "domain": "enterprise",
+    "arguments": {
+      "keyword": "恒大地产集团有限公司"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 6.44,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 6,
+    "reported_total": 6,
+    "numeric_evidence": [
+      {
+        "path": "resultList[0].relatedEnterpriseCurrentNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[0].relatedEnterpriseHistoryNum",
+        "value": 20
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseCurrentNum",
+        "value": 6
+      },
+      {
+        "path": "resultList[1].relatedEnterpriseHistoryNum",
+        "value": 0
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseCurrentNum",
+        "value": 1
+      },
+      {
+        "path": "resultList[2].relatedEnterpriseHistoryNum",
+        "value": 13
+      },
+      {
+        "path": "resultList[3].relatedEnterpriseCurrentNum",
+        "value": 2
+      },
+      {
+        "path": "resultList[3].relatedEnterpriseHistoryNum",
+        "value": 2
+      },
+      {
+        "path": "resultList[4].relatedEnterpriseCurrentNum",
+        "value": 3
+      },
+      {
+        "path": "resultList[4].relatedEnterpriseHistoryNum",
+        "value": 1
+      },
+      {
+        "path": "total",
+        "value": 6
+      }
+    ],
+    "response_sha256": "e59b037d3117f0594be1ab4c0ffc499ca144da9d5018677ac006152d6d5d4bf7"
+  },
+  {
+    "tool": "enterprise_risk_insight_score",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 34.98,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "risk_level",
+      "risk_reason",
+      "risk_score"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "risk_score",
+        "value": 0
+      }
+    ],
+    "response_sha256": "98f6715b4bcb7aaadd8aac346c1a6c286be048e2bf70af17edcee0cd00e601af"
+  },
+  {
+    "tool": "risk_insight_litigation_risk_profile",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 34.99,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "caKaitingList",
+      "caKaitingTotal",
+      "caLianList",
+      "caLianTotal",
+      "caList",
+      "caTotal",
+      "edList",
+      "edTotal",
+      "enforcementList",
+      "enforcementTotal",
+      "jdList",
+      "jdTotal",
+      "limitedList",
+      "limitedTotal"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "caKaitingTotal",
+        "value": 16568
+      },
+      {
+        "path": "caLianTotal",
+        "value": 109
+      },
+      {
+        "path": "caTotal",
+        "value": 7505
+      },
+      {
+        "path": "edTotal",
+        "value": 575
+      },
+      {
+        "path": "enforcementTotal",
+        "value": 5875
+      },
+      {
+        "path": "jdTotal",
+        "value": 3878
+      },
+      {
+        "path": "limitedTotal",
+        "value": 3676
+      }
+    ],
+    "response_sha256": "c68f3053a58b81e8da922a6c3be1000f0409ef460ea88436847a0e85899ddfe6"
+  },
+  {
+    "tool": "risk_insight_court_hearings",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 34.996,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 20,
+    "reported_total": 16568,
+    "numeric_evidence": [
+      {
+        "path": "total",
+        "value": 16568
+      }
+    ],
+    "response_sha256": "a1bc2e0931d101a5de7caf46e193ad5b0c8dc18262d547dc6b121c99c318311d"
+  },
+  {
+    "tool": "risk_insight_penalties",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 34.997,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "punishmentCount",
+      "punishmentList"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [
+      {
+        "path": "punishmentCount",
+        "value": 1
+      }
+    ],
+    "response_sha256": "292ddf6affb99102bd92c935fd702662b3e5d161ff12cf707484a1b48efe54fb"
+  },
+  {
+    "tool": "risk_insight_business_anomalies",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 35.002,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  },
+  {
+    "tool": "risk_insight_consumption_restrictions",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name",
+      "pageSize": 20
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 35.611,
+    "status": "data",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "resultList",
+      "total"
+    ],
+    "row_count": 20,
+    "reported_total": 3676,
+    "numeric_evidence": [
+      {
+        "path": "total",
+        "value": 3676
+      }
+    ],
+    "response_sha256": "312d206e7dd86aa468a80e9e7ecc44a2ef7557bb39f8367cba5c1d3767a37764"
+  },
+  {
+    "tool": "risk_insight_chattel_mortgage",
+    "domain": "risk",
+    "arguments": {
+      "matchKeyword": "恒大地产集团有限公司",
+      "keywordType": "name"
+    },
+    "invocation_id": "1793069089307358000",
+    "elapsed_seconds": 36.09,
+    "status": "empty",
+    "error_category": null,
+    "result_type": "dict",
+    "top_level_fields": [
+      "text"
+    ],
+    "row_count": null,
+    "reported_total": null,
+    "numeric_evidence": [],
+    "response_sha256": "b2da0c4c26e517e5a1eae0af2a20ca47c52ef51906cf1c3dfa2fe10a67cc714c"
+  }
+]

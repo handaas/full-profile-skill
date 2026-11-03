@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="data:," />
-  <title>华为技术有限公司 企业综合画像报告</title>
+  <title>比亚迪股份有限公司 企业综合画像报告</title>
   <style>
     :root { --bg:#eef1f5; --card:#ffffff; --text:#1f2937; --muted:#64748b; --line:#d8dee8; --blue:#003b71; --deep:#003b71; --red:#7f1d1d; --gold:#d97706; --stripe:#666; }
     * { box-sizing:border-box; letter-spacing:0 !important; }
@@ -145,6 +145,7 @@
     .chart-box-gauge { max-width:380px; }
     .chart-title { margin:0 0 8px; color:#0b3768; font-size:15px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
     .chart-canvas { width:100%; height:300px; }
+    .chart-canvas[data-chart-state="waiting"],.chart-canvas[data-chart-state="error"] { display:flex; align-items:center; justify-content:center; color:#64748b; font-size:13px; text-align:center; }
     .chart-box-gauge .chart-canvas { height:240px; }
     .chart-data { margin-top:10px; }
     .chart-data summary { cursor:pointer; color:#0b5ca8; font-size:12px; font-weight:700; padding:4px 0; }
@@ -212,16 +213,70 @@ var Fr={},Gr={};var Wr,Hr=function(){function t(t,e,n){var i=this;this._sleepAft
 </script>
   <script>
 (function(){
-  window.__echarts_instances=[];
+  if(window.__handaas_boot_charts){window.__handaas_boot_charts();return;}
+  window.__echarts_instances=window.__echarts_instances||[];
+  var status=window.__handaas_chart_status={state:'waiting',total:0,ready:0,failed:0};
+  var timer=null, retries=0, MAX_RETRIES=100;
+  var layoutRetries=0, MAX_LAYOUT_RETRIES=50;
+  var PALETTE=['#0b5ca8','#0284c7','#0b3768','#d97706','#059669','#dc2626','#7c3aed','#db2777','#0891b2','#65a30d'];
+  var FONTS='-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif';
+  function summarize(nodes){
+    status.total=nodes.length;status.ready=0;status.failed=0;
+    nodes.forEach(function(el){
+      if(el.getAttribute('data-chart-state')==='ready'){status.ready++;}
+      else if(el.getAttribute('data-chart-state')==='error'){status.failed++;}
+    });
+    status.state=status.ready===status.total?'ready':
+      (status.ready+status.failed===status.total?(status.ready?'degraded':'error'):'waiting');
+  }
+  function raf(fn){if(window.requestAnimationFrame){window.requestAnimationFrame(fn);}else{fn();}}
   function boot(){
-    if(typeof echarts==='undefined'){return;}
-    var PALETTE=['#0b5ca8','#0284c7','#0b3768','#d97706','#059669','#dc2626','#7c3aed','#db2777','#0891b2','#65a30d'];
-    var FONTS='-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif';
-    document.querySelectorAll('.chart-canvas').forEach(function(el){
-      var raw=el.getAttribute('data-spec'); if(!raw){return;}
-      var spec; try{spec=JSON.parse(raw.replace(/&quot;/g,'"').replace(/&amp;/g,'&'));}catch(e){return;}
-      var chart=echarts.init(el,null,{renderer:'svg'});
-      window.__echarts_instances.push(chart);
+    if(document.readyState==='loading'){return;}
+    var nodes=document.querySelectorAll('.chart-canvas');
+    if(!nodes.length){summarize(nodes);return;}
+    if(!window.echarts || typeof window.echarts.init!=='function'){
+      var exhausted=retries>=MAX_RETRIES;
+      nodes.forEach(function(el){
+        if(el.__handaas_chart_ready){return;}
+        el.__handaas_dependency_error=true;
+        el.setAttribute('data-chart-state',exhausted?'error':'waiting');
+        el.textContent=exhausted?'图表库加载失败或不可用，请查看数据明细或重新生成离线报告。':'图表库正在加载，数据明细仍可查看。';
+      });
+      summarize(nodes);
+      if(!exhausted && timer===null){
+        retries++;
+        timer=setTimeout(function(){timer=null;boot();},100);
+      }
+      return;
+    }
+    if(timer!==null){clearTimeout(timer);timer=null;}
+    var pendingLayout=0;
+    nodes.forEach(function(el){
+      if(el.__handaas_chart_ready){return;}
+      if(el.getAttribute('data-chart-state')==='error' && !el.__handaas_dependency_error){return;}
+      if(window.ResizeObserver && !el.__handaas_resize_observer){
+        el.__handaas_resize_observer=new ResizeObserver(function(){
+          var current=el.__handaas_chart;
+          if(current && typeof current.resize==='function'){try{current.resize();}catch(ignored){}}
+          else{boot();}
+        });
+        el.__handaas_resize_observer.observe(el);
+      }
+      if((el.getClientRects && el.getClientRects().length===0) || el.clientWidth<2 || el.clientHeight<2){
+        el.setAttribute('data-chart-state','waiting');
+        el.textContent='图表等待布局完成后渲染，数据明细仍可查看。';
+        pendingLayout++;
+        return;
+      }
+      var chart=null;
+      try{
+        var raw=el.getAttribute('data-spec');
+        if(!raw){throw new Error('Missing chart configuration');}
+        // getAttribute already decodes HTML entities; a second decode corrupts labels.
+        var spec=JSON.parse(raw);
+        if(['line','bar','pie','gauge','radar'].indexOf(spec.type)<0){throw new Error('Unsupported chart type');}
+        el.textContent='';
+        chart=window.echarts.init(el,null,{renderer:'svg'});
       var opt={color:PALETTE,tooltip:{trigger: spec.type==='pie'?'item':'axis'},textStyle:{fontFamily:FONTS,fontSize:12,color:'#334155'},grid:{left:48,right:24,top:30,bottom:40},legend:{top:0,textStyle:{fontSize:11}}};
       if(spec.type==='line'){
         opt.xAxis={type:'category',data:spec.x,axisLabel:{fontSize:11,interval:0,rotate: spec.x && spec.x.length>6?35:0}};
@@ -247,14 +302,47 @@ var Fr={},Gr={};var Wr,Hr=function(){function t(t,e,n){var i=this;this._sleepAft
         opt.radar={indicator:spec.indicators,radius:'62%',axisName:{color:'#475569',fontSize:11},splitArea:{areaStyle:{color:['#f8fbff','#eef4fb']}}};
         opt.series=[{type:'radar',areaStyle:{opacity:0.18},data:spec.series}];
       }
-      chart.setOption(opt);
-      window.addEventListener('resize',function(){chart.resize();});
+        chart.setOption(opt);
+        el.__handaas_chart=chart;
+        el.__handaas_chart_ready=true;
+        el.__handaas_dependency_error=false;
+        el.setAttribute('data-chart-state','ready');
+        window.__echarts_instances.push(chart);
+        raf(function(){try{chart.resize();}catch(ignored){}});
+      }catch(e){
+        if(chart && typeof chart.dispose==='function'){try{chart.dispose();}catch(ignored){}}
+        el.__handaas_dependency_error=false;
+        el.setAttribute('data-chart-state','error');
+        el.textContent='图表绘制失败，请查看数据明细。';
+      }
     });
+    summarize(nodes);
+    if(pendingLayout && layoutRetries<MAX_LAYOUT_RETRIES){
+      layoutRetries++;
+      setTimeout(boot,100);
+    }
   }
-  if(document.readyState!=='loading'){boot();}else{document.addEventListener('DOMContentLoaded',boot);}
+  window.__handaas_boot_charts=boot;
   window.__echarts_resize_all=function(){
     (window.__echarts_instances||[]).forEach(function(c){try{c.resize();}catch(e){}});
   };
+  function bootAfterLayout(){
+    raf(function(){boot();window.__echarts_resize_all();});
+  }
+  window.addEventListener('resize',window.__echarts_resize_all);
+  window.addEventListener('load',bootAfterLayout);
+  window.addEventListener('pageshow',bootAfterLayout);
+  window.addEventListener('handaas:echarts-ready',bootAfterLayout);
+  window.addEventListener('orientationchange',bootAfterLayout);
+  // A very late external script can still recover after the bounded retry ends.
+  document.addEventListener('load',function(event){
+    if(event.target && event.target.tagName==='SCRIPT'){boot();}
+  },true);
+  document.addEventListener('DOMContentLoaded',bootAfterLayout);
+  document.addEventListener('visibilitychange',boot);
+  if(document.fonts && document.fonts.ready){document.fonts.ready.then(function(){window.__echarts_resize_all();});}
+  [0,300,1000,2500].forEach(function(ms){setTimeout(function(){boot();window.__echarts_resize_all();},ms);});
+  boot();
 })();
 </script>
 </head>
@@ -264,57 +352,51 @@ var Fr={},Gr={};var Wr,Hr=function(){function t(t,e,n){var i=this;this._sleepAft
     <div class="cover-grid">
       <aside class="cover-side">
         <h2 class="cover-side-title">企业综合画像报告</h2>
-        <p class="cover-date">2026年08月10日</p>
+        <p class="cover-date">2026年10月27日</p>
         <h3 class="toc-title">目录</h3>
         <ol class="toc-list"><li><span>报告摘要</span></li><li><span>查询对象与口径</span></li><li><span>数据总览</span></li><li><span>核心分析</span></li><li><span>代表性记录</span></li><li><span>特征与洞察</span></li></ol>
         <h3 class="scope-title">报告口径</h3>
-        <div class="biz-scope"><div class="biz-scope-item"><span>匹配对象</span><strong>华为技术有限公司</strong></div><div class="biz-scope-item"><span>匹配方式</span><strong>全维度综合画像（直接聚合 8 个 MCP）</strong></div><div class="biz-scope-item"><span>数据范围</span><strong>覆盖 8/8 大数据源，13 个明细章节，4 条跨维度洞察</strong></div><div class="biz-scope-item"><span>局限说明</span><strong>综合画像基于多维公开数据交叉分析；建议结合行业调研与财务审计综合判断。</strong></div></div>
+        <div class="biz-scope"><div class="biz-scope-item"><span>匹配对象</span><strong>比亚迪股份有限公司</strong></div><div class="biz-scope-item"><span>匹配方式</span><strong>全维度综合画像（直接聚合 8 个 MCP）</strong></div><div class="biz-scope-item"><span>数据范围</span><strong>覆盖 8/8 大数据源，9 个明细章节，3 条跨维度洞察</strong></div><div class="biz-scope-item"><span>局限说明</span><strong>未确认主体时所有返回仅为具名检索线索；已确认主体时也仅整理公开事实，不生成自定义评分，并需结合行业适用性、权属核验与财务审计判断。</strong></div></div>
       </aside>
       <section class="cover-main">
         <p class="report-kicker">FULL PROFILE ANALYSIS</p>
-        <h1>华为技术有限公司 企业综合画像报告</h1>
-        <p class="report-lead">本报告以「华为技术有限公司」为分析对象，直接聚合工商、风险、经营、创新、商标、招投标、舆情、招聘 8 大维度数据源，综合评分 72.8（全面领先型）。全维度综合评分 72.8，各维度表现稳健，无明显短板，综合竞争力突出</p>
-        <div class="abstract-box">报告涵盖查询对象、数据总览、核心分析、代表性记录与结构洞察，所有数据均标注口径与来源。</div>
-        <div class="biz-metrics"><div class="biz-metric"><span class="m-name">综合风险评分</span><span class="m-tag t-down">低风险</span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">对外投资</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">综合评分</span><span class="m-tag t-neutral">全面领先型</span><span class="m-value">72.8</span></div><div class="biz-metric"><span class="m-name">商标数量</span><span class="m-tag"></span><span class="m-value">22299</span></div><div class="biz-metric"><span class="m-name">招投标参与</span><span class="m-tag"></span><span class="m-value">1000</span></div><div class="biz-metric"><span class="m-name">舆情总数</span><span class="m-tag"></span><span class="m-value">8578</span></div><div class="biz-metric"><span class="m-name">注册资本</span><span class="m-tag"></span><span class="m-value">人民币 411.41亿</span></div><div class="biz-metric"><span class="m-name">在招岗位</span><span class="m-tag"></span><span class="m-value">10404</span></div><div class="biz-metric"><span class="m-name">开庭公告</span><span class="m-tag"></span><span class="m-value">4339</span></div><div class="biz-metric"><span class="m-name">股东数量</span><span class="m-tag"></span><span class="m-value">1</span></div><div class="biz-metric"><span class="m-name">创新实力</span><span class="m-tag"></span><span class="m-value">40</span></div><div class="biz-metric"><span class="m-name">风险健康度</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">工商基础</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">市场活跃度</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">经营状况</span><span class="m-tag"></span><span class="m-value">47</span></div><div class="biz-metric"><span class="m-name">数字化程度</span><span class="m-tag"></span><span class="m-value">85.8</span></div><div class="biz-metric"><span class="m-name">品牌商标</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">人才储备</span><span class="m-tag"></span><span class="m-value">60</span></div><div class="biz-metric"><span class="m-name">-</span><span class="m-tag"></span><span class="m-value">-</span></div><div class="biz-metric"><span class="m-name">-</span><span class="m-tag"></span><span class="m-value">-</span></div></div>
-        <ul class="exec-list"><li>全维度综合评分 72.8，各维度表现稳健，无明显短板，综合竞争力突出。</li><li>市场活跃度高（中标 224 次）但专利储备有限，建议加强技术积累与知识产权保护。</li><li>综合风险偏高（低风险）且对外投资 50 家，风险敞口较大。建议核查关联方风险传导，加强风险隔离机制。</li><li>具备一定的 IP 储备，建议继续完善专利与商标布局，构建更全面的知识产权保护体系。</li><li>存在较多法律风险，建议优先处理风险案件，避免影响业务稳定性。</li></ul>
-        <div class="cover-findings"><h3 class="cover-findings-title">核心发现</h3><div class="cover-findings-grid"><div class="finding-card"><p class="f-label">创新实力与市场活跃度匹配</p><p class="f-text">中标 224 次。</p></div><div class="finding-card"><p class="f-label">风险敞口与投资规模匹配度</p><p class="f-text">风险评分 100、风险等级「低风险」、对外投资 50 家、开庭公告 4339 条。</p></div><div class="finding-card"><p class="f-label">知识产权护城河（专利+商标）</p><p class="f-text">商标 22299 件、覆盖 45 个类别。</p></div><div class="finding-card"><p class="f-label">扩张活力与风险匹配度</p><p class="f-text">当前在招 10404 人、近三月招聘 10404 人、开庭公告 4339 条。</p></div></div></div>
-        <div class="cover-dimensions"><span class="dim-label">分析维度</span><div class="dim-tags"><span class="dim-tag">综合画像评分</span><span class="dim-tag">全维度专项评分雷达</span><span class="dim-tag">工商基础信息</span><span class="dim-tag">股东出资结构</span><span class="dim-tag">对外投资清单（关联方敞口）</span><span class="dim-tag">全维度专项评分矩阵</span><span class="dim-tag">创新与知识产权</span><span class="dim-tag">招投标市场表现</span><span class="dim-tag">综合风险评分</span><span class="dim-tag">风险维度统计</span><span class="dim-tag">开庭公告明细</span><span class="dim-tag">经营规模与资本运作</span><span class="dim-tag">招聘与扩张活跃度</span></div></div>
-        <div class="cover-scope-bar"><span class="scope-item"><em>数据产品</em>企业大数据、企业风险洞察、企业经营分析、专利大数据、商标大数据、标讯大数据、舆情大数据、招聘大数据</span><span class="scope-item"><em>覆盖范围</em>覆盖 8/8 大数据源，13 个明细章节，4 条跨维度洞察</span></div>
+        <h1>比亚迪股份有限公司 企业综合画像报告</h1>
+        <p class="report-lead">本报告以「比亚迪股份有限公司」为分析对象，直接聚合工商、风险、经营、创新、商标、招投标、舆情、招聘 8 大维度数据源，阻断项：开庭公告 298 条，需人工司法核验。发现需人工核验的司法或合规线索：开庭公告 298 条，需人工司法核验；不生成自定义综合或专项评分</p>
+        <div class="abstract-box">报告涵盖查询对象、数据总览、代表性记录与结构洞察，所有数据均标注口径与来源。</div>
+        <div class="biz-metrics"><div class="biz-metric"><span class="m-name">上游风险评分</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">对外投资</span><span class="m-tag"></span><span class="m-value">109</span></div><div class="biz-metric"><span class="m-name">专利数量</span><span class="m-tag"></span><span class="m-value">46035</span></div><div class="biz-metric"><span class="m-name">商标数量</span><span class="m-tag"></span><span class="m-value">3907</span></div><div class="biz-metric"><span class="m-name">招投标参与</span><span class="m-tag"></span><span class="m-value">1000</span></div><div class="biz-metric"><span class="m-name">舆情总数</span><span class="m-tag"></span><span class="m-value">5131</span></div><div class="biz-metric"><span class="m-name">注册资本</span><span class="m-tag"></span><span class="m-value">人民币 91.17亿</span></div><div class="biz-metric"><span class="m-name">融资轮次</span><span class="m-tag"></span><span class="m-value">7</span></div><div class="biz-metric"><span class="m-name">在招岗位</span><span class="m-tag"></span><span class="m-value">126960</span></div><div class="biz-metric"><span class="m-name">开庭公告</span><span class="m-tag"></span><span class="m-value">298</span></div><div class="biz-metric"><span class="m-name">股东数量</span><span class="m-tag"></span><span class="m-value">2</span></div><div class="biz-metric-empty"></div></div>
+        <ul class="exec-list"><li>发现需人工核验的司法或合规线索：开庭公告 298 条，需人工司法核验；不生成自定义综合或专项评分。</li><li>专利与中标数量仅表明两类公开记录并存；缺少专利权属/有效性、中标金额与履约结果、收入转化和同行分母，不能推断技术转化、市场强弱或竞争优势；需逐项核验。</li><li>专利、商标及类别数量仅为公开记录；未逐项核验权利人与目标法人关系、有效状态、权利范围、质量和同行分母，不能推断品牌/技术保护强度或竞争优势；需逐项核验。</li><li>招聘活动存在、融资活动存在；司法暴露触发人工核验门禁，不能评价为健康扩张。</li></ul>
+        <div class="cover-findings"><h3 class="cover-findings-title">核心发现</h3><div class="cover-findings-grid"><div class="finding-card"><p class="f-label">专利与中标公开记录并存</p><p class="f-text">专利 46035 件、中标 9 次。</p></div><div class="finding-card"><p class="f-label">专利与商标公开记录并存</p><p class="f-text">专利 46035 件、商标 3907 件、覆盖 45 个类别。</p></div><div class="finding-card"><p class="f-label">扩张活动与司法暴露</p><p class="f-text">当前招聘 126960、近三月招聘 126960、融资 7、开庭 298、限高 0。</p></div></div></div>
+        <div class="cover-dimensions"><span class="dim-label">分析维度</span><div class="dim-tags"><span class="dim-tag">工商基础信息</span><span class="dim-tag">股东出资结构</span><span class="dim-tag">对外投资清单（关联方敞口）</span><span class="dim-tag">专利与商标公开统计</span><span class="dim-tag">招投标公开统计</span><span class="dim-tag">风险维度统计</span><span class="dim-tag">开庭公告明细</span><span class="dim-tag">经营规模与资本运作</span><span class="dim-tag">招聘公开统计</span></div></div>
+        <div class="cover-scope-bar"><span class="scope-item"><em>数据产品</em>企业大数据、企业风险洞察、企业经营分析、专利大数据、商标大数据、标讯大数据、舆情大数据、招聘大数据</span><span class="scope-item"><em>覆盖范围</em>覆盖 8/8 大数据源，9 个明细章节，3 条跨维度洞察</span></div>
       </section>
     </div>
   </article>
   <main class="research-doc">
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>报告摘要</h2><p class="biz-section-note">概述分析对象、数据覆盖范围与核心发现。</p></div><span class="biz-tag">Summary</span></div><p class="biz-summary">本报告以「华为技术有限公司」为分析对象，直接聚合工商、风险、经营、创新、商标、招投标、舆情、招聘 8 大维度数据源，综合评分 72.8（全面领先型）。全维度综合评分 72.8，各维度表现稳健，无明显短板，综合竞争力突出</p></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>查询对象与口径</h2><p class="biz-section-note">说明匹配对象、匹配方式与数据范围。</p></div><span class="biz-tag">Caliber</span></div><div class="info-list"><div class="info-row"><span class="info-label">匹配对象</span><span class="info-value">华为技术有限公司</span></div><div class="info-row"><span class="info-label">匹配方式</span><span class="info-value">全维度综合画像（直接聚合 8 个 MCP）</span></div><div class="info-row"><span class="info-label">数据范围</span><span class="info-value">覆盖 8/8 大数据源，13 个明细章节，4 条跨维度洞察</span></div><div class="info-row"><span class="info-label">局限说明</span><span class="info-value">综合画像基于多维公开数据交叉分析；建议结合行业调研与财务审计综合判断。</span></div></div></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>数据总览</h2><p class="biz-section-note">关键指标一览。</p></div><span class="biz-tag">Metrics</span></div><div class="biz-metrics"><div class="biz-metric"><span class="m-name">综合风险评分</span><span class="m-tag t-down">低风险</span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">对外投资</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">综合评分</span><span class="m-tag t-neutral">全面领先型</span><span class="m-value">72.8</span></div><div class="biz-metric"><span class="m-name">商标数量</span><span class="m-tag"></span><span class="m-value">22299</span></div><div class="biz-metric"><span class="m-name">招投标参与</span><span class="m-tag"></span><span class="m-value">1000</span></div><div class="biz-metric"><span class="m-name">舆情总数</span><span class="m-tag"></span><span class="m-value">8578</span></div><div class="biz-metric"><span class="m-name">注册资本</span><span class="m-tag"></span><span class="m-value">人民币 411.41亿</span></div><div class="biz-metric"><span class="m-name">在招岗位</span><span class="m-tag"></span><span class="m-value">10404</span></div><div class="biz-metric"><span class="m-name">开庭公告</span><span class="m-tag"></span><span class="m-value">4339</span></div><div class="biz-metric"><span class="m-name">股东数量</span><span class="m-tag"></span><span class="m-value">1</span></div><div class="biz-metric"><span class="m-name">创新实力</span><span class="m-tag"></span><span class="m-value">40</span></div><div class="biz-metric"><span class="m-name">风险健康度</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">工商基础</span><span class="m-tag"></span><span class="m-value">50</span></div><div class="biz-metric"><span class="m-name">市场活跃度</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">经营状况</span><span class="m-tag"></span><span class="m-value">47</span></div><div class="biz-metric"><span class="m-name">数字化程度</span><span class="m-tag"></span><span class="m-value">85.8</span></div><div class="biz-metric"><span class="m-name">品牌商标</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">人才储备</span><span class="m-tag"></span><span class="m-value">60</span></div><div class="biz-metric"><span class="m-name">-</span><span class="m-tag"></span><span class="m-value">-</span></div><div class="biz-metric"><span class="m-name">-</span><span class="m-tag"></span><span class="m-value">-</span></div></div></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>核心分析</h2><p class="biz-section-note">按维度展开目标核心数据与结构化明细。</p></div><span class="biz-tag">Analysis</span></div><div class="biz-pair"><div><h3 class="biz-subsection-title">综合画像评分</h3><p class="biz-section-note">综合定位：全面领先型</p><div class="chart-box chart-box-gauge"><div class="chart-canvas" data-chart="gauge" data-spec="{&quot;type&quot;:&quot;gauge&quot;,&quot;value&quot;:72.8,&quot;max&quot;:100,&quot;level&quot;:&quot;全面领先型&quot;}"></div></div></div><div><h3 class="biz-subsection-title">全维度专项评分雷达</h3><p class="biz-section-note">跨维度交叉评分（8 维）：创新实力 / 风险健康度 / 工商基础 / 市场活跃度 / 经营状况 / 数字化程度 / 品牌商标 / 人才储备</p><div class="chart-box"><div class="chart-canvas" data-chart="radar" data-spec="{&quot;type&quot;:&quot;radar&quot;,&quot;indicators&quot;:[{&quot;name&quot;:&quot;创新实力&quot;,&quot;max&quot;:100.0},{&quot;name&quot;:&quot;风险健康度&quot;,&quot;max&quot;:100.0},{&quot;name&quot;:&quot;工商基础&quot;,&quot;max&quot;:100.0},{&quot;name&quot;:&quot;市场活跃度&quot;,&quot;max&quot;:100.0},{&quot;name&quot;:&quot;经营状况&quot;,&quot;max&quot;:100.0},{&quot;name&quot;:&quot;数字化程度&quot;,&quot;max&quot;:100.0},{&quot;name&quot;:&quot;品牌商标&quot;,&quot;max&quot;:100.0},{&quot;name&quot;:&quot;人才储备&quot;,&quot;max&quot;:100.0}],&quot;series&quot;:[{&quot;name&quot;:&quot;专项评分&quot;,&quot;value&quot;:[40.0,100.0,50.0,100.0,47.0,85.8,100.0,60.0]}]}"></div></div></div></div>
-<h3 class="biz-subsection-title">工商基础信息</h3><div class="info-list"><div class="info-row"><span class="info-label">企业名称</span><span class="info-value">华为技术有限公司</span></div><div class="info-row"><span class="info-label">统一社会信用代码</span><span class="info-value">914403001922038216</span></div><div class="info-row"><span class="info-label">法定代表人</span><span class="info-value">赵明路</span></div><div class="info-row"><span class="info-label">企业类型</span><span class="info-value">有限责任公司(法人独资)</span></div><div class="info-row"><span class="info-label">行业</span><span class="info-value">制造业 / 计算机、通信和其他电子设备制造业 / 通信设备制造 / 通信系统设备制造</span></div><div class="info-row"><span class="info-label">注册资本</span><span class="info-value">人民币 411.41亿</span></div><div class="info-row"><span class="info-label">成立日期</span><span class="info-value">1987-09-15</span></div><div class="info-row"><span class="info-label">经营状态</span><span class="info-value">营业</span></div><div class="info-row"><span class="info-label">注册地址</span><span class="info-value">深圳市龙岗区坂田华为总部办公楼</span></div><div class="info-row"><span class="info-label">经营范围</span><span class="info-value">一般经营项目:程控交换机、传输设备、数据通信设备、宽带多媒体设备、电源、无线通信设备、微电子产品、软件、系统集成工程、计算机及配套设备、终端设备及相关通信信息产品、数据中心机房基础设施及配套产品(含供配电、空调制冷设备、智能管理监控等)的开发、生产、销售、技术服务、工程安装、维修、咨询、代理、租赁;信息系统设计、集成、运行维护;集成电路设计、研发;统一通信及协作类产品,服务器及配套软硬件产品,存储设备及相关软件的研发、生产、销售;无线数据产品(不含限制项目)的研发、生产、销售;通信站点机房基础设施及通信配套设备(含通信站点、通信机房、通信电源、机柜、天线、通信线缆、配电、智能管理监控、锂电及储能系统等)的研发、生产、销售;能源科学技术研究及能源相关产品的研发、生产、销售;大数据产品、物联网及通信相关领域产品的研发、生产、销售;汽车零部件及智能系统的研发、生产、销售及服务;建筑工程;设计、…</span></div></div>
-<h3 class="biz-subsection-title">股东出资结构</h3><p class="biz-section-note">股东持股比例与实缴情况（资本充实性核查基础）</p><div class="table-wrap"><table><thead><tr><th>股东名称</th><th>持股比例</th><th>认缴金额</th><th>实缴金额</th><th>股东类型</th></tr></thead><tbody><tr><td>华为投资控股有限公司</td><td>100.0%</td><td>人民币 411.41亿</td><td>人民币 405.41亿</td><td>企业法人</td></tr></tbody></table></div>
-<h3 class="biz-subsection-title">对外投资清单（关联方敞口）</h3><p class="biz-section-note">共 50 家对外投资（展示前 15 家），风险可能经关联方传导</p><div class="table-wrap"><table><thead><tr><th>被投资企业</th><th>持股比例</th><th>经营状态</th><th>成立日期</th><th>注册资本</th></tr></thead><tbody><tr><td>杭州华为企业通信技术有限公司</td><td>100%</td><td>营业 &gt; 存续</td><td>2008-07-11</td><td>人民币 4.30亿</td></tr><tr><td>深圳市华为思义技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2025-04-27</td><td>人民币 2000万</td></tr><tr><td>成都华为技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2007-06-07</td><td>人民币 1.50亿</td></tr><tr><td>华为软件技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2005-09-07</td><td>人民币 5.00亿</td></tr><tr><td>华为技术服务(福建)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2022-04-28</td><td>人民币 500万</td></tr><tr><td>深圳市海思半导体有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2004-10-18</td><td>人民币 20.00亿</td></tr><tr><td>东莞华为服务有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2016-12-09</td><td>人民币 2.00亿</td></tr><tr><td>华为技术服务(云南)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2022-10-28</td><td>人民币 1200万</td></tr><tr><td>北京华为数字技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2006-03-08</td><td>人民币 2.00亿</td></tr><tr><td>华为机器有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2007-09-12</td><td>人民币 21.00亿</td></tr><tr><td>华为技术服务(山西)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2023-12-27</td><td>人民币 500万</td></tr><tr><td>海思技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2018-06-19</td><td>人民币 8000万</td></tr><tr><td>华为技术服务(湖南)有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2022-09-09</td><td>人民币 1000万</td></tr><tr><td>东莞极目机器有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2023-06-15</td><td>人民币 46.89亿</td></tr><tr><td>上海华为技术有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2001-01-16</td><td>人民币 2.00亿</td></tr></tbody></table></div>
-<h3 class="biz-subsection-title">全维度专项评分矩阵</h3><p class="biz-section-note">跨维度交叉评分（创新实力 / 风险健康度 / 工商基础 / 市场活跃度 / 经营状况 / 数字化程度 / 品牌商标 / 人才储备）</p><div class="table-wrap"><table><thead><tr><th>评估维度</th><th>评分</th><th>等级</th></tr></thead><tbody><tr><td>创新实力</td><td>40</td><td>中</td></tr><tr><td>风险健康度</td><td>100</td><td>优</td></tr><tr><td>工商基础</td><td>50</td><td>中</td></tr><tr><td>市场活跃度</td><td>100</td><td>优</td></tr><tr><td>经营状况</td><td>47</td><td>中</td></tr><tr><td>数字化程度</td><td>85.8</td><td>优</td></tr><tr><td>品牌商标</td><td>100</td><td>优</td></tr><tr><td>人才储备</td><td>60</td><td>良</td></tr></tbody></table></div>
-<h3 class="biz-subsection-title">创新与知识产权</h3><div class="info-list"><div class="info-row"><span class="info-label">商标总数</span><span class="info-value">22299</span></div><div class="info-row"><span class="info-label">覆盖类别</span><span class="info-value">1-化学原料、2-颜料油漆、3-日化用品、4-燃料油脂、5-医药、6-金属材料、7-机械设备、8-手工器械</span></div></div>
-<h3 class="biz-subsection-title">招投标市场表现</h3><div class="info-list"><div class="info-row"><span class="info-label">招投标参与</span><span class="info-value">1000</span></div></div>
-<div class="biz-pair"><div><h3 class="biz-subsection-title">综合风险评分</h3><p class="biz-section-note">风险洞察综合评分（越低越好）</p><div class="chart-box chart-box-gauge"><div class="chart-canvas" data-chart="gauge" data-spec="{&quot;type&quot;:&quot;gauge&quot;,&quot;value&quot;:100.0,&quot;max&quot;:100,&quot;level&quot;:&quot;低风险&quot;}"></div></div></div><div><h3 class="biz-subsection-title">风险维度统计</h3><p class="biz-section-note">各风险维度记录数</p><div class="table-wrap"><table><thead><tr><th>风险维度</th><th>记录数</th></tr></thead><tbody><tr><td>开庭公告</td><td>4339</td></tr></tbody></table></div></div></div>
-<h3 class="biz-subsection-title">开庭公告明细</h3><p class="biz-section-note">共 4339 条（展示前 20 条）</p><div class="table-wrap"><table><thead><tr><th>案由</th><th>法院</th><th>公告类型</th></tr></thead><tbody><tr><td>-</td><td>广东省深圳市福田区人民法院</td><td>开庭公告</td></tr><tr><td>-</td><td>广东省深圳市中级人民法院</td><td>开庭公告</td></tr><tr><td>侵害商标权纠纷</td><td>杭州市余杭区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>侵害商标权纠纷</td><td>天津市和平区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>-</td><td>天津市和平区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>-</td><td>广东省深圳市龙岗区人民法院</td><td>开庭公告</td></tr><tr><td>-</td><td>广东省深圳市龙岗区人民法院</td><td>开庭公告</td></tr><tr><td>侵害商标权纠纷</td><td>景德镇市珠山区人民法院</td><td>开庭公告</td></tr><tr><td>侵害商标权及不正当竞争纠纷</td><td>上海市徐汇区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>-</td><td>广东省深圳市福田区人民法院</td><td>开庭公告</td></tr><tr><td>-</td><td>广东省深圳市福田区人民法院</td><td>开庭公告</td></tr><tr><td>-</td><td>广东省深圳市福田区人民法院</td><td>开庭公告</td></tr><tr><td>侵害商标权纠纷</td><td>寿光市人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>侵害商标权纠纷</td><td>深圳市龙岗区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>租赁合同纠纷</td><td>北京市通州区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>建设工程施工合同纠纷</td><td>上海市浦东新区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>侵害商标权纠纷</td><td>北京市西城区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>劳动合同纠纷</td><td>上海市黄浦区人民法院</td><td>开庭公告</td></tr><tr><td>侵害商标权纠纷</td><td>上海市徐汇区人民法院</td><td>起诉状副本及开庭传票</td></tr><tr><td>侵害商标权纠纷</td><td>深圳市龙岗区人民法院</td><td>起诉状副本及开庭传票</td></tr></tbody></table></div>
-<h3 class="biz-subsection-title">经营规模与资本运作</h3><div class="info-list"><div class="info-row"><span class="info-label">人员规模</span><span class="info-value">10000人以上</span></div><div class="info-row"><span class="info-label">年营业额</span><span class="info-value">10亿以上</span></div><div class="info-row"><span class="info-label">上榜记录</span><span class="info-value">10</span></div></div>
-<h3 class="biz-subsection-title">招聘与扩张活跃度</h3><div class="info-list"><div class="info-row"><span class="info-label">当前在招</span><span class="info-value">10404</span></div><div class="info-row"><span class="info-label">近三月招聘</span><span class="info-value">10404</span></div><div class="info-row"><span class="info-label">平均薪酬</span><span class="info-value">11957 元/月</span></div></div></section>
-    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>代表性记录</h2><p class="biz-section-note">关键明细记录 Top N。</p></div><span class="biz-tag">Records</span></div><div class="table-wrap"><table><thead><tr><th>维度</th><th>关键记录</th></tr></thead><tbody><tr><td>对外投资</td><td>53 家关联企业</td></tr><tr><td>风险评级</td><td>风险评分 100（低风险）</td></tr></tbody></table></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>报告摘要</h2><p class="biz-section-note">概述分析对象、数据覆盖范围与核心发现。</p></div><span class="biz-tag">Summary</span></div><p class="biz-summary">本报告以「比亚迪股份有限公司」为分析对象，直接聚合工商、风险、经营、创新、商标、招投标、舆情、招聘 8 大维度数据源，阻断项：开庭公告 298 条，需人工司法核验。发现需人工核验的司法或合规线索：开庭公告 298 条，需人工司法核验；不生成自定义综合或专项评分</p></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>查询对象与口径</h2><p class="biz-section-note">说明匹配对象、匹配方式与数据范围。</p></div><span class="biz-tag">Caliber</span></div><div class="info-list"><div class="info-row"><span class="info-label">匹配对象</span><span class="info-value">比亚迪股份有限公司</span></div><div class="info-row"><span class="info-label">匹配方式</span><span class="info-value">全维度综合画像（直接聚合 8 个 MCP）</span></div><div class="info-row"><span class="info-label">数据范围</span><span class="info-value">覆盖 8/8 大数据源，9 个明细章节，3 条跨维度洞察</span></div><div class="info-row"><span class="info-label">局限说明</span><span class="info-value">未确认主体时所有返回仅为具名检索线索；已确认主体时也仅整理公开事实，不生成自定义评分，并需结合行业适用性、权属核验与财务审计判断。</span></div></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>数据总览</h2><p class="biz-section-note">关键指标一览。</p></div><span class="biz-tag">Metrics</span></div><div class="biz-metrics"><div class="biz-metric"><span class="m-name">上游风险评分</span><span class="m-tag"></span><span class="m-value">100</span></div><div class="biz-metric"><span class="m-name">对外投资</span><span class="m-tag"></span><span class="m-value">109</span></div><div class="biz-metric"><span class="m-name">专利数量</span><span class="m-tag"></span><span class="m-value">46035</span></div><div class="biz-metric"><span class="m-name">商标数量</span><span class="m-tag"></span><span class="m-value">3907</span></div><div class="biz-metric"><span class="m-name">招投标参与</span><span class="m-tag"></span><span class="m-value">1000</span></div><div class="biz-metric"><span class="m-name">舆情总数</span><span class="m-tag"></span><span class="m-value">5131</span></div><div class="biz-metric"><span class="m-name">注册资本</span><span class="m-tag"></span><span class="m-value">人民币 91.17亿</span></div><div class="biz-metric"><span class="m-name">融资轮次</span><span class="m-tag"></span><span class="m-value">7</span></div><div class="biz-metric"><span class="m-name">在招岗位</span><span class="m-tag"></span><span class="m-value">126960</span></div><div class="biz-metric"><span class="m-name">开庭公告</span><span class="m-tag"></span><span class="m-value">298</span></div><div class="biz-metric"><span class="m-name">股东数量</span><span class="m-tag"></span><span class="m-value">2</span></div><div class="biz-metric-empty"></div></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>核心分析</h2><p class="biz-section-note">按维度展开目标核心数据与结构化明细。</p></div><span class="biz-tag">Analysis</span></div><h3 class="biz-subsection-title">工商基础信息</h3><div class="info-list"><div class="info-row"><span class="info-label">企业名称</span><span class="info-value">比亚迪股份有限公司</span></div><div class="info-row"><span class="info-label">统一社会信用代码</span><span class="info-value">91440300192317458F</span></div><div class="info-row"><span class="info-label">法定代表人</span><span class="info-value">王传福</span></div><div class="info-row"><span class="info-label">企业类型</span><span class="info-value">股份有限公司(台港澳与境内合资,上市)</span></div><div class="info-row"><span class="info-label">行业</span><span class="info-value">制造业 / 电气机械和器材制造业 / 电池制造 / 其他电池制造</span></div><div class="info-row"><span class="info-label">注册资本</span><span class="info-value">人民币 91.17亿</span></div><div class="info-row"><span class="info-label">成立日期</span><span class="info-value">1995-02-10</span></div><div class="info-row"><span class="info-label">经营状态</span><span class="info-value">营业</span></div><div class="info-row"><span class="info-label">注册地址</span><span class="info-value">深圳市大鹏新区葵涌街道延安路一号</span></div><div class="info-row"><span class="info-label">经营范围</span><span class="info-value">一般经营项目无许可经营项目锂离子电池以及其他电池、充电器、电子产品、仪器仪表、柔性线路板、五金制品、液晶显示器、手机零配件、模具、塑胶制品及其相关附件的生产、销售;3D眼镜、GPS导航产品的研发、生产及销售;货物及技术进出口(不含分销、国家专营专控商品);作为比亚迪汽车有限公司比亚迪品牌乘用车、电动车的总经销商,从事上述品牌的乘用车、电动车及其零部件的营销、批发和出口,提供售后服务;电池管理系统、换流柜、逆变柜器、汇流箱、开关柜、储能机组的销售;汽车电子装置研发、销售;新能源汽车关键零部件研发以及上述零部件的关键零件、部件的研发、销售;轨道交通运输设备(含轨道交通车辆、工程机械、各类机电设备、电子设备及零部件、电子电气件、轨道交通信号系统、通信及综合监控系统与设备)的研发、设计、销售、租赁与售后服务(不涉及国营贸易管理商品,涉及配额、许可证管理及其他专项管理的商品,按国家有关规定办理申请…</span></div></div>
+<h3 class="biz-subsection-title">股东出资结构</h3><p class="biz-section-note">股东持股比例与实缴情况（资本充实性核查基础）</p><div class="table-wrap"><table><thead><tr><th>股东名称</th><th>持股比例</th><th>认缴金额</th><th>实缴金额</th><th>股东类型</th></tr></thead><tbody><tr><td>A股股东</td><td>59.6%</td><td>人民币 54.34亿</td><td>人民币 18.13亿</td><td>其他投资者</td></tr><tr><td>境外上市外资股</td><td>40.4%</td><td>人民币 36.83亿</td><td>人民币 10.98亿</td><td>其他投资者</td></tr></tbody></table></div>
+<h3 class="biz-subsection-title">对外投资清单（关联方敞口）</h3><p class="biz-section-note">报告总量 109 家，当前列表展示 15 家；仅表示关联暴露面，未核验关联方风险传导</p><div class="table-wrap"><table><thead><tr><th>被投资企业</th><th>持股比例</th><th>经营状态</th><th>成立日期</th><th>注册资本</th></tr></thead><tbody><tr><td>弗迪动力有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2019-12-25</td><td>人民币 1.00亿</td></tr><tr><td>比亚迪建设工程有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2017-07-03</td><td>人民币 5.00亿</td></tr><tr><td>比亚迪机电设备有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2017-12-07</td><td>人民币 5000万</td></tr><tr><td>比亚迪通信信号有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2017-10-26</td><td>人民币 1.10亿</td></tr><tr><td>广州比亚迪精工有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2014-08-04</td><td>人民币 3.00亿</td></tr><tr><td>深圳市比亚迪供应链管理有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2013-10-15</td><td>人民币 35.00亿</td></tr><tr><td>深圳市比亚迪投资管理有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2015-05-15</td><td>人民币 2000万</td></tr><tr><td>深圳市比亚迪锂电池有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>1998-06-09</td><td>人民币 61.60亿</td></tr><tr><td>芜湖亚为建设工程有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2025-01-24</td><td>人民币 1.08亿</td></tr><tr><td>弗迪科技有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2019-12-25</td><td>人民币 1.00亿</td></tr><tr><td>弗迪精工有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2019-12-24</td><td>人民币 1.00亿</td></tr><tr><td>弗迪电池有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2020-12-11</td><td>人民币 5.00亿</td></tr><tr><td>格尔木比亚迪锂电材料有限公司</td><td>100%</td><td>营业 &gt; 开业</td><td>2021-01-27</td><td>人民币 5000万</td></tr><tr><td>深圳比亚迪实业有限公司</td><td>100%</td><td>营业 &gt; 存续(在营、开业、在册)</td><td>2019-06-25</td><td>人民币 5000万</td></tr><tr><td>比亚迪汽车有限公司</td><td>99%</td><td>营业 &gt; 开业</td><td>1997-03-21</td><td>人民币 13.38亿</td></tr></tbody></table></div>
+<h3 class="biz-subsection-title">专利与商标公开统计</h3><div class="info-list"><div class="info-row"><span class="info-label">专利总数</span><span class="info-value">46035</span></div><div class="info-row"><span class="info-label">发明申请</span><span class="info-value">13208</span></div><div class="info-row"><span class="info-label">发明授权</span><span class="info-value">11064</span></div><div class="info-row"><span class="info-label">实用新型</span><span class="info-value">17855</span></div><div class="info-row"><span class="info-label">外观设计</span><span class="info-value">3908</span></div><div class="info-row"><span class="info-label">商标总数</span><span class="info-value">3907</span></div><div class="info-row"><span class="info-label">覆盖类别</span><span class="info-value">1-化学原料、2-颜料油漆、3-日化用品、4-燃料油脂、5-医药、6-金属材料、7-机械设备、8-手工器械</span></div></div>
+<h3 class="biz-subsection-title">招投标公开统计</h3><div class="info-list"><div class="info-row"><span class="info-label">招投标参与</span><span class="info-value">1000</span></div></div>
+<h3 class="biz-subsection-title">风险维度统计</h3><p class="biz-section-note">各风险维度记录数</p><div class="table-wrap"><table><thead><tr><th>风险维度</th><th>记录数</th></tr></thead><tbody><tr><td>开庭公告</td><td>298</td></tr></tbody></table></div>
+<h3 class="biz-subsection-title">开庭公告明细</h3><p class="biz-section-note">报告总量 298 条（当前展示 20 条）；保留上游案号/日期/主体用于人工去重，缺少案号或日期的记录无法逐案去重</p><div class="table-wrap"><table><thead><tr><th>案号</th><th>案由</th><th>法院</th><th>相关主体</th><th>开庭/发布日期</th><th>公告类型</th><th>去重键状态</th></tr></thead><tbody><tr><td>-</td><td>名誉权纠纷</td><td>广东省深圳市龙岗区人民法院</td><td>-</td><td>2026-09-29</td><td>起诉状副本及开庭传票</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>合同纠纷</td><td>四川省成都高新技术产业开发区人民法院</td><td>-</td><td>2026-10-12</td><td>起诉状副本及开庭传票</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>名誉权纠纷</td><td>上海市闵行区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>北京知识产权法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>北京知识产权法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>产品责任纠纷</td><td>新余市渝水区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>建设工程分包合同纠纷</td><td>浙江省宁波市江北区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>名誉权纠纷</td><td>浙江省绍兴市越城区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>买卖合同纠纷</td><td>江苏省无锡市宜兴市人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市坪山区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>北京知识产权法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市坪山区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市中级人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市南山区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>产品责任纠纷</td><td>上海市嘉定区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市南山区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市中级人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>名誉权纠纷</td><td>上海市青浦区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市坪山区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr><tr><td>-</td><td>-</td><td>广东省深圳市坪山区人民法院</td><td>-</td><td>-</td><td>开庭公告</td><td>缺少案号或日期，无法逐案去重</td></tr></tbody></table></div>
+<h3 class="biz-subsection-title">经营规模与资本运作</h3><div class="info-list"><div class="info-row"><span class="info-label">人员规模</span><span class="info-value">10000人以上</span></div><div class="info-row"><span class="info-label">年营业额</span><span class="info-value">10亿以上</span></div><div class="info-row"><span class="info-label">融资轮次</span><span class="info-value">7</span></div><div class="info-row"><span class="info-label">上榜记录</span><span class="info-value">10</span></div></div>
+<h3 class="biz-subsection-title">招聘公开统计</h3><div class="info-list"><div class="info-row"><span class="info-label">当前在招</span><span class="info-value">126960</span></div><div class="info-row"><span class="info-label">近三月招聘</span><span class="info-value">126960</span></div><div class="info-row"><span class="info-label">平均薪酬</span><span class="info-value">7863 元/月</span></div></div></section>
+    <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>代表性记录</h2><p class="biz-section-note">关键明细记录 Top N。</p></div><span class="biz-tag">Records</span></div><div class="table-wrap"><table><thead><tr><th>维度</th><th>关键记录</th></tr></thead><tbody><tr><td>对外投资</td><td>109 家关联企业</td></tr><tr><td>风险评级</td><td>上游风险评分 100（上游原等级与司法记录冲突待核验）</td></tr><tr><td>创新储备</td><td>专利 46035 件</td></tr><tr><td>资本运作</td><td>已完成 7 轮融资</td></tr></tbody></table></div></section>
     <section class="report-page biz-section"><div class="report-topbar"><div class="report-stripe"></div><div class="report-banner">企业综合画像报告</div></div><div class="biz-section-head"><div><h2>特征与洞察</h2><p class="biz-section-note">基于数据的结构化解读。</p></div><span class="biz-tag">Insights</span></div><div class="structural-feature-grid"><article class="structural-feature-card">
-  <h3>创新实力与市场活跃度匹配</h3>
-  <p class="structural-evidence">中标 224 次。</p>
-  <p>市场活跃度高（中标 224 次）但专利储备有限，建议加强技术积累与知识产权保护。</p>
+  <h3>专利与中标公开记录并存</h3>
+  <p class="structural-evidence">专利 46035 件、中标 9 次。</p>
+  <p>专利与中标数量仅表明两类公开记录并存；缺少专利权属/有效性、中标金额与履约结果、收入转化和同行分母，不能推断技术转化、市场强弱或竞争优势；需逐项核验。</p>
 </article><article class="structural-feature-card">
-  <h3>风险敞口与投资规模匹配度</h3>
-  <p class="structural-evidence">风险评分 100、风险等级「低风险」、对外投资 50 家、开庭公告 4339 条。</p>
-  <p>综合风险偏高（低风险）且对外投资 50 家，风险敞口较大。建议核查关联方风险传导，加强风险隔离机制。</p>
+  <h3>专利与商标公开记录并存</h3>
+  <p class="structural-evidence">专利 46035 件、商标 3907 件、覆盖 45 个类别。</p>
+  <p>专利、商标及类别数量仅为公开记录；未逐项核验权利人与目标法人关系、有效状态、权利范围、质量和同行分母，不能推断品牌/技术保护强度或竞争优势；需逐项核验。</p>
 </article><article class="structural-feature-card">
-  <h3>知识产权护城河（专利+商标）</h3>
-  <p class="structural-evidence">商标 22299 件、覆盖 45 个类别。</p>
-  <p>具备一定的 IP 储备，建议继续完善专利与商标布局，构建更全面的知识产权保护体系。</p>
-</article><article class="structural-feature-card">
-  <h3>扩张活力与风险匹配度</h3>
-  <p class="structural-evidence">当前在招 10404 人、近三月招聘 10404 人、开庭公告 4339 条。</p>
-  <p>存在较多法律风险，建议优先处理风险案件，避免影响业务稳定性。</p>
+  <h3>扩张活动与司法暴露</h3>
+  <p class="structural-evidence">当前招聘 126960、近三月招聘 126960、融资 7、开庭 298、限高 0。</p>
+  <p>招聘活动存在、融资活动存在；司法暴露触发人工核验门禁，不能评价为健康扩张。</p>
 </article></div></section>
     
   </main>

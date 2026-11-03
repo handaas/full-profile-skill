@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "skill": "full-profile-skill",
+  "case_id": "03-ip-brand-leader",
+  "title": "创新品牌企业画像",
+  "invocation_id": "1793069089316777000",
+  "provenance": {
+    "integrator_id": "683e574805537ace146cc05e",
+    "runner_sha256": "05777c2f2b0791cb5157aef691206606dade8df7af3b17212285b7ae74632a66",
+    "credential_policy_sha256": "bcabf08a1ca92f28357c0e57a8bae9bfa910eb1d4b204d8195ee3b7a77106eed",
+    "scenario_sha256": "cee0fd1153eb2567a0a9e292c96cede200d1e6036e82747d9cf6f4519d418254",
+    "skill_source_hashes": {
+      "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+      "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+      "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+      "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+      "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+      "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+      "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+      "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+    },
+    "upstream_source_hashes": {
+      "enterprise-mcp-server": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+      "enterprise-risk-mcp-server": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+      "enterprise-operation-mcp-server": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+      "patent-mcp-server": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+      "trademark-mcp-server": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+      "bidding-mcp-server": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+      "news-mcp-server": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+      "recruitment-mcp-server": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+    },
+    "upstream_dependency_hashes": {
+      "enterprise-mcp-server/server/mcp_server.py": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+      "enterprise-risk-mcp-server/server/mcp_server.py": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+      "enterprise-operation-mcp-server/server/mcp_server.py": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+      "patent-mcp-server/server/mcp_server.py": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+      "trademark-mcp-server/server/mcp_server.py": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+      "bidding-mcp-server/server/mcp_server.py": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+      "news-mcp-server/server/mcp_server.py": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+      "recruitment-mcp-server/server/mcp_server.py": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+    }
+  },
+  "source_changed_during_run": false,
+  "started_at": "2026-10-27T10:44:49+08:00",
+  "elapsed_seconds": 40.05,
+  "returncode": 0,
+  "exception_type": null,
+  "command": "python3 full-profile-skill/scripts/compose_fusion_report.py --enterprise '华为技术有限公司' --keyword-type name --output full-profile-skill/output/live-replaced-20261027/03-ip-brand-leader/report.json --report-output full-profile-skill/output/live-replaced-20261027/03-ip-brand-leader/report.html",
+  "transport": "local MCP servers via loopback streamable-http",
+  "cache_used": false,
+  "call_count": 23,
+  "successful_data_calls": 18,
+  "empty_calls": 5,
+  "failed_calls": 0,
+  "checks": {
+    "issues": [],
+    "warnings": [],
+    "coverage_pct": 90,
+    "subject": {
+      "enterprise": "华为技术有限公司",
+      "match_raw": "华为技术有限公司",
+      "resolved": true,
+      "resolve_reason": "工商基础信息中的企业名称和统一社会信用代码已返回"
+    },
+    "title": "华为技术有限公司 企业综合画像报告",
+    "data_mode": "live_mcp",
+    "metrics": [
+      {
+        "label": "上游风险评分",
+        "value": "99",
+        "hint": "上游原始口径；若与司法事件数量冲突，不作为低风险背书"
+      },
+      {
+        "label": "对外投资",
+        "value": "54",
+        "hint": "关联方数量（风险传导面）"
+      },
+      {
+        "label": "专利数量",
+        "value": "133237",
+        "hint": "专利公开数量；归属、有效性和质量待核验"
+      },
+      {
+        "label": "商标数量",
+        "value": "22694",
+        "hint": "商标公开数量；归属、状态和类别适用性待核验"
+      },
+      {
+        "label": "招投标参与",
+        "value": "1000",
+        "hint": "公开记录数量；不代表市场强弱或履约结果"
+      },
+      {
+        "label": "舆情总数",
+        "value": "8612",
+        "hint": "正面占比 54%"
+      },
+      {
+        "label": "注册资本",
+        "value": "人民币 411.41亿",
+        "hint": "工商登记注册资本"
+      },
+      {
+        "label": "在招岗位",
+        "value": "6258",
+        "hint": "招聘平台公开数量；不代表经营动能或扩张结果"
+      },
+      {
+        "label": "开庭公告",
+        "value": "4401",
+        "hint": "诉讼开庭记录总数"
+      },
+      {
+        "label": "股东数量",
+        "value": "1",
+        "hint": "工商公示股东数"
+      }
+    ],
+    "quality_report": {
+      "total_sections": 10,
+      "populated_sections": 9,
+      "empty_sections": 1,
+      "coverage_pct": 90,
+      "data_sources": 8,
+      "cross_insights": 3
+    },
+    "unregistered_tools": [],
+    "checks": {
+      "json_html_markdown": true,
+      "explicit_live": true,
+      "tool_calls_recorded": 23,
+      "offline_scripts": true,
+      "independent_rerender": true
+    }
+  },
+  "status": "passed",
+  "source_hashes": {
+    "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+    "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+    "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+    "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+    "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+    "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+    "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+    "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+  }
+}

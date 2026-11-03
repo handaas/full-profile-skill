@@ -1,0 +1,1129 @@
+{
+  "run_id": "live-replaced-20261027",
+  "skill": "full-profile-skill",
+  "counts": {
+    "passed": 5
+  },
+  "scenarios": [
+    {
+      "scenario": {
+        "id": "01-investment-profile",
+        "title": "上市科技企业综合画像",
+        "user_request": "为宁德时代新能源科技股份有限公司生成工商、风险、经营、创新、品牌、市场、舆情和人才八维画像。",
+        "purpose": "形成投资研究的统一事实底稿。",
+        "args": [
+          "--enterprise",
+          "宁德时代新能源科技股份有限公司",
+          "--keyword-type",
+          "name"
+        ],
+        "expected_checks": [
+          "八个维度的覆盖状态清楚",
+          "综合评分不掩盖缺失维度",
+          "创新与市场交叉结论有双域证据",
+          "主体名称一致"
+        ],
+        "limitations": [
+          "不是证券投资建议",
+          "报告不包含未公开财务预测"
+        ]
+      },
+      "result": {
+        "schema_version": 1,
+        "skill": "full-profile-skill",
+        "case_id": "01-investment-profile",
+        "title": "上市科技企业综合画像",
+        "invocation_id": "1793069088421308000",
+        "provenance": {
+          "integrator_id": "683e574805537ace146cc05e",
+          "runner_sha256": "05777c2f2b0791cb5157aef691206606dade8df7af3b17212285b7ae74632a66",
+          "credential_policy_sha256": "bcabf08a1ca92f28357c0e57a8bae9bfa910eb1d4b204d8195ee3b7a77106eed",
+          "scenario_sha256": "7c541512657acce95d805f236bb10bc19e18559a6b0238c44032f336e30597fa",
+          "skill_source_hashes": {
+            "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+            "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+            "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+            "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+            "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+            "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+            "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+            "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+          },
+          "upstream_source_hashes": {
+            "enterprise-mcp-server": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          },
+          "upstream_dependency_hashes": {
+            "enterprise-mcp-server/server/mcp_server.py": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server/server/mcp_server.py": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server/server/mcp_server.py": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server/server/mcp_server.py": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server/server/mcp_server.py": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server/server/mcp_server.py": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server/server/mcp_server.py": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server/server/mcp_server.py": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          }
+        },
+        "source_changed_during_run": false,
+        "started_at": "2026-10-27T10:44:48+08:00",
+        "elapsed_seconds": 3.036,
+        "returncode": 0,
+        "exception_type": null,
+        "command": "python3 full-profile-skill/scripts/compose_fusion_report.py --enterprise '宁德时代新能源科技股份有限公司' --keyword-type name --output full-profile-skill/output/live-replaced-20261027/01-investment-profile/report.json --report-output full-profile-skill/output/live-replaced-20261027/01-investment-profile/report.html",
+        "transport": "local MCP servers via loopback streamable-http",
+        "cache_used": false,
+        "call_count": 23,
+        "successful_data_calls": 20,
+        "empty_calls": 3,
+        "failed_calls": 0,
+        "checks": {
+          "issues": [],
+          "warnings": [],
+          "coverage_pct": 90,
+          "subject": {
+            "enterprise": "宁德时代新能源科技股份有限公司",
+            "match_raw": "宁德时代新能源科技股份有限公司",
+            "resolved": true,
+            "resolve_reason": "工商基础信息中的企业名称和统一社会信用代码已返回"
+          },
+          "title": "宁德时代新能源科技股份有限公司 企业综合画像报告",
+          "data_mode": "live_mcp",
+          "metrics": [
+            {
+              "label": "上游风险评分",
+              "value": "100",
+              "hint": "上游原始口径；若与司法事件数量冲突，不作为低风险背书"
+            },
+            {
+              "label": "对外投资",
+              "value": "159",
+              "hint": "关联方数量（风险传导面）"
+            },
+            {
+              "label": "专利数量",
+              "value": "26876",
+              "hint": "专利公开数量；归属、有效性和质量待核验"
+            },
+            {
+              "label": "商标数量",
+              "value": "1534",
+              "hint": "商标公开数量；归属、状态和类别适用性待核验"
+            },
+            {
+              "label": "招投标参与",
+              "value": "390",
+              "hint": "公开记录数量；不代表市场强弱或履约结果"
+            },
+            {
+              "label": "舆情总数",
+              "value": "5572",
+              "hint": "正面占比 42%"
+            },
+            {
+              "label": "注册资本",
+              "value": "人民币 45.64亿",
+              "hint": "工商登记注册资本"
+            },
+            {
+              "label": "融资轮次",
+              "value": "22",
+              "hint": "历史融资轮次"
+            },
+            {
+              "label": "在招岗位",
+              "value": "8606",
+              "hint": "招聘平台公开数量；不代表经营动能或扩张结果"
+            },
+            {
+              "label": "开庭公告",
+              "value": "229",
+              "hint": "诉讼开庭记录总数"
+            },
+            {
+              "label": "股东数量",
+              "value": "5",
+              "hint": "工商公示股东数"
+            }
+          ],
+          "quality_report": {
+            "total_sections": 10,
+            "populated_sections": 9,
+            "empty_sections": 1,
+            "coverage_pct": 90,
+            "data_sources": 8,
+            "cross_insights": 3
+          },
+          "unregistered_tools": [],
+          "checks": {
+            "json_html_markdown": true,
+            "explicit_live": true,
+            "tool_calls_recorded": 23,
+            "offline_scripts": true,
+            "independent_rerender": true,
+            "offline_browser": true
+          }
+        },
+        "status": "passed",
+        "source_hashes": {
+          "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+          "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+          "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+          "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+          "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+          "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+          "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+          "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+        },
+        "technical_status": "passed",
+        "audited_at": "2026-10-27T11:13:00+08:00",
+        "evidence_binding": {
+          "report.json": "0c70e46bfe3a8f1403e06a5382fc8e6f0d97b845f48c4ee7175c09fe0c87b21a",
+          "report.html": "457bbe0d6e5d0e5c80682a8b8d1d712b7f518634c46f73ab55c037f2adde3882",
+          "report.md": "46e163793968542854dbc3a8e6501ed6ee770fc3df6b016d5934f1446543b23a",
+          "calls.json": "1121f025b2c2c14454f83ec77abe2f017b8d4da8642d40c4ecd268305e73591b",
+          "result.json": "af816daddf1650a6b3d7f4d3f8d5420ef68597fe5d8ca53476aa2e83dbca6d40",
+          "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+        },
+        "business_review": {
+          "id": "01-investment-profile",
+          "verdict": "acceptable",
+          "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+          "checks": [
+            {
+              "expectation": "八个维度的覆盖状态清楚",
+              "status": "pass",
+              "evidence": "数据范围写覆盖8/8数据源；工商、风险、经营、专利、商标、标讯、舆情、招聘均有独立指标或章节，quality_report为10/11、91%。 当前第五轮result.started_at=2026-10-26T18:44:41+08:00，invocation_id=1793011481099545000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=20；subject.enterprise=宁德时代新能源科技股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=159；专利数量=26876；商标数量=1534；招投标参与=390；舆情总数=5572；注册资本=人民币 45.64亿；融资轮次=22；在招岗位=8606；开庭公告=229]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/390)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/34)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(15/15)；enterprise:enterprise_get_enterprise_invest_info=data(50/159)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/229)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=data]"
+            },
+            {
+              "expectation": "综合评分不掩盖缺失维度",
+              "status": "pass",
+              "evidence": "不生成自定义综合/专项评分，specialty_scores为空；开庭229触发“不予综合评级”，并披露1个空章节。 当前第五轮result.started_at=2026-10-26T18:44:41+08:00，invocation_id=1793011481099545000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=20；subject.enterprise=宁德时代新能源科技股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=159；专利数量=26876；商标数量=1534；招投标参与=390；舆情总数=5572；注册资本=人民币 45.64亿；融资轮次=22；在招岗位=8606；开庭公告=229]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/390)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/34)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(15/15)；enterprise:enterprise_get_enterprise_invest_info=data(50/159)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/229)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=data]"
+            },
+            {
+              "expectation": "创新与市场交叉结论有双域证据",
+              "status": "pass",
+              "evidence": "洞察引用专利26876与中标33，明确两类公开记录并存且缺少权属、履约、转化和同行分母。 当前第五轮result.started_at=2026-10-26T18:44:41+08:00，invocation_id=1793011481099545000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=20；subject.enterprise=宁德时代新能源科技股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=159；专利数量=26876；商标数量=1534；招投标参与=390；舆情总数=5572；注册资本=人民币 45.64亿；融资轮次=22；在招岗位=8606；开庭公告=229]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/390)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/34)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(15/15)；enterprise:enterprise_get_enterprise_invest_info=data(50/159)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/229)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=data]"
+            },
+            {
+              "expectation": "主体名称一致",
+              "status": "pass",
+              "evidence": "subject、match_raw及工商企业名称均为宁德时代新能源科技股份有限公司，统一信用代码已返回。 当前第五轮result.started_at=2026-10-26T18:44:41+08:00，invocation_id=1793011481099545000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=20；subject.enterprise=宁德时代新能源科技股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=159；专利数量=26876；商标数量=1534；招投标参与=390；舆情总数=5572；注册资本=人民币 45.64亿；融资轮次=22；在招岗位=8606；开庭公告=229]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/390)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/34)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(15/15)；enterprise:enterprise_get_enterprise_invest_info=data(50/159)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/229)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=data]"
+            }
+          ],
+          "issues": [],
+          "evidence_binding": {
+            "report.json": "0c70e46bfe3a8f1403e06a5382fc8e6f0d97b845f48c4ee7175c09fe0c87b21a",
+            "report.html": "457bbe0d6e5d0e5c80682a8b8d1d712b7f518634c46f73ab55c037f2adde3882",
+            "report.md": "46e163793968542854dbc3a8e6501ed6ee770fc3df6b016d5934f1446543b23a",
+            "calls.json": "1121f025b2c2c14454f83ec77abe2f017b8d4da8642d40c4ecd268305e73591b",
+            "result.json": "af816daddf1650a6b3d7f4d3f8d5420ef68597fe5d8ca53476aa2e83dbca6d40",
+            "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+          }
+        }
+      }
+    },
+    {
+      "scenario": {
+        "id": "02-high-risk-profile",
+        "title": "高风险地产企业全面体检",
+        "user_request": "对恒大地产集团有限公司做全面体检，重点观察风险、经营和市场活动之间的关系。",
+        "purpose": "支持高风险交易的初步筛查。",
+        "args": [
+          "--enterprise",
+          "恒大地产集团有限公司",
+          "--keyword-type",
+          "name"
+        ],
+        "expected_checks": [
+          "风险事件分类可追溯",
+          "风险与经营事实不作无依据因果推断",
+          "空创新或招聘维度不被补零",
+          "综合定位体现重大风险"
+        ],
+        "limitations": [
+          "公开事件可能有时间延迟",
+          "不替代法律和财务专项尽调"
+        ]
+      },
+      "result": {
+        "schema_version": 1,
+        "skill": "full-profile-skill",
+        "case_id": "02-high-risk-profile",
+        "title": "高风险地产企业全面体检",
+        "invocation_id": "1793069089307358000",
+        "provenance": {
+          "integrator_id": "683e574805537ace146cc05e",
+          "runner_sha256": "05777c2f2b0791cb5157aef691206606dade8df7af3b17212285b7ae74632a66",
+          "credential_policy_sha256": "bcabf08a1ca92f28357c0e57a8bae9bfa910eb1d4b204d8195ee3b7a77106eed",
+          "scenario_sha256": "2b53f26487644751a9f5359a4a1ef70e1d362112382abbb29d0180d0ede9f404",
+          "skill_source_hashes": {
+            "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+            "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+            "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+            "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+            "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+            "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+            "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+            "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+          },
+          "upstream_source_hashes": {
+            "enterprise-mcp-server": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          },
+          "upstream_dependency_hashes": {
+            "enterprise-mcp-server/server/mcp_server.py": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server/server/mcp_server.py": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server/server/mcp_server.py": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server/server/mcp_server.py": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server/server/mcp_server.py": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server/server/mcp_server.py": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server/server/mcp_server.py": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server/server/mcp_server.py": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          }
+        },
+        "source_changed_during_run": false,
+        "started_at": "2026-10-27T10:44:49+08:00",
+        "elapsed_seconds": 40.057,
+        "returncode": 0,
+        "exception_type": null,
+        "command": "python3 full-profile-skill/scripts/compose_fusion_report.py --enterprise '恒大地产集团有限公司' --keyword-type name --output full-profile-skill/output/live-replaced-20261027/02-high-risk-profile/report.json --report-output full-profile-skill/output/live-replaced-20261027/02-high-risk-profile/report.html",
+        "transport": "local MCP servers via loopback streamable-http",
+        "cache_used": false,
+        "call_count": 23,
+        "successful_data_calls": 21,
+        "empty_calls": 2,
+        "failed_calls": 0,
+        "checks": {
+          "issues": [],
+          "warnings": [],
+          "coverage_pct": 90,
+          "subject": {
+            "enterprise": "恒大地产集团有限公司",
+            "match_raw": "恒大地产集团有限公司",
+            "resolved": true,
+            "resolve_reason": "工商基础信息中的企业名称和统一社会信用代码已返回"
+          },
+          "title": "恒大地产集团有限公司 企业综合画像报告",
+          "data_mode": "live_mcp",
+          "metrics": [
+            {
+              "label": "上游风险评分",
+              "value": "0",
+              "hint": "上游原始口径；若与司法事件数量冲突，不作为低风险背书"
+            },
+            {
+              "label": "对外投资",
+              "value": "195",
+              "hint": "关联方数量（风险传导面）"
+            },
+            {
+              "label": "专利数量",
+              "value": "2",
+              "hint": "专利公开数量；归属、有效性和质量待核验"
+            },
+            {
+              "label": "商标数量",
+              "value": "1433",
+              "hint": "商标公开数量；归属、状态和类别适用性待核验"
+            },
+            {
+              "label": "招投标参与",
+              "value": "68",
+              "hint": "公开记录数量；不代表市场强弱或履约结果"
+            },
+            {
+              "label": "舆情总数",
+              "value": "3164",
+              "hint": "正面占比 10%"
+            },
+            {
+              "label": "行政处罚",
+              "value": "1",
+              "hint": "行政处罚记录数"
+            },
+            {
+              "label": "注册资本",
+              "value": "人民币 39.40亿",
+              "hint": "工商登记注册资本"
+            },
+            {
+              "label": "融资轮次",
+              "value": "12",
+              "hint": "历史融资轮次"
+            },
+            {
+              "label": "在招岗位",
+              "value": "1220",
+              "hint": "招聘平台公开数量；不代表经营动能或扩张结果"
+            },
+            {
+              "label": "限制高消费",
+              "value": "3676",
+              "hint": "被执行限高记录数"
+            },
+            {
+              "label": "开庭公告",
+              "value": "16568",
+              "hint": "诉讼开庭记录总数"
+            },
+            {
+              "label": "股东数量",
+              "value": "21",
+              "hint": "工商公示股东数"
+            }
+          ],
+          "quality_report": {
+            "total_sections": 10,
+            "populated_sections": 9,
+            "empty_sections": 1,
+            "coverage_pct": 90,
+            "data_sources": 8,
+            "cross_insights": 3
+          },
+          "unregistered_tools": [],
+          "checks": {
+            "json_html_markdown": true,
+            "explicit_live": true,
+            "tool_calls_recorded": 23,
+            "offline_scripts": true,
+            "independent_rerender": true,
+            "offline_browser": true
+          }
+        },
+        "status": "passed",
+        "source_hashes": {
+          "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+          "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+          "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+          "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+          "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+          "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+          "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+          "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+        },
+        "technical_status": "passed",
+        "audited_at": "2026-10-27T11:13:00+08:00",
+        "evidence_binding": {
+          "report.json": "e3b7bb9d3e6cfa7f67e52d1301cfc3e8f375b0924aa2d57933e754ab74cc8f62",
+          "report.html": "03b476a72ed1ad94fe3cd0fd2cab4a22c73b687da25e517bf91852f9bdc48257",
+          "report.md": "53d4ba00199587557596ccb32b009c6c94a3d62fb82392838ea0bc78475afd2a",
+          "calls.json": "ccb24a892db1a3ae6199888045a46735afaba3bc02409b8738a5e9a1bc523390",
+          "result.json": "5377d46bba7e098cfa474eeb17976e07a5ba5916654f69b6025acb9cd57e3ffa",
+          "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+        },
+        "business_review": {
+          "id": "02-high-risk-profile",
+          "verdict": "acceptable",
+          "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+          "checks": [
+            {
+              "expectation": "风险事件分类可追溯",
+              "status": "pass",
+              "evidence": "风险维度分列处罚1、限高3676、开庭16568；处罚/限高有文号或案号、机关/法院和日期样本，开庭缺字段也以“-”保留。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011482964848000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=21；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[上游风险评分=0；对外投资=195；专利数量=2；商标数量=1433；招投标参与=68；舆情总数=3164；行政处罚=1；注册资本=人民币 39.40亿；融资轮次=12；在招岗位=1220]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=5；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；trademark:trademark_bigdata_trademark_profile=data；operation:operation_insight_company_trends=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/16568)；risk:risk_insight_penalties=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=data(20/3676)；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "风险与经营事实不作无依据因果推断",
+              "status": "pass",
+              "evidence": "经营规模、融资12、招聘1220与风险分区展示；洞察只称活动与司法暴露并存，不推断因果。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011482964848000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=21；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[上游风险评分=0；对外投资=195；专利数量=2；商标数量=1433；招投标参与=68；舆情总数=3164；行政处罚=1；注册资本=人民币 39.40亿；融资轮次=12；在招岗位=1220]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=5；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；trademark:trademark_bigdata_trademark_profile=data；operation:operation_insight_company_trends=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/16568)；risk:risk_insight_penalties=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=data(20/3676)；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "空创新或招聘维度不被补零",
+              "status": "pass",
+              "evidence": "创新实际返回专利2/商标1433，招聘实际返回1220；其他缺失字段保留“-”或省略，未作为零分。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011482964848000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=21；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[上游风险评分=0；对外投资=195；专利数量=2；商标数量=1433；招投标参与=68；舆情总数=3164；行政处罚=1；注册资本=人民币 39.40亿；融资轮次=12；在招岗位=1220]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=5；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；trademark:trademark_bigdata_trademark_profile=data；operation:operation_insight_company_trends=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/16568)；risk:risk_insight_penalties=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=data(20/3676)；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "综合定位体现重大风险",
+              "status": "pass",
+              "evidence": "verdict为人工司法核验/不予综合评级，blockers明确限高3676、开庭16568及高风险。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011482964848000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=21；subject.enterprise=恒大地产集团有限公司，resolved=True；metrics[上游风险评分=0；对外投资=195；专利数量=2；商标数量=1433；招投标参与=68；舆情总数=3164；行政处罚=1；注册资本=人民币 39.40亿；融资轮次=12；在招岗位=1220]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=5；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/68)；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；trademark:trademark_bigdata_trademark_profile=data；operation:operation_insight_company_trends=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_enterprise_rankings=data(10/11)；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/195)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/16568)；risk:risk_insight_penalties=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=data(20/3676)；risk:risk_insight_chattel_mortgage=empty]"
+            }
+          ],
+          "issues": [],
+          "evidence_binding": {
+            "report.json": "e3b7bb9d3e6cfa7f67e52d1301cfc3e8f375b0924aa2d57933e754ab74cc8f62",
+            "report.html": "03b476a72ed1ad94fe3cd0fd2cab4a22c73b687da25e517bf91852f9bdc48257",
+            "report.md": "53d4ba00199587557596ccb32b009c6c94a3d62fb82392838ea0bc78475afd2a",
+            "calls.json": "ccb24a892db1a3ae6199888045a46735afaba3bc02409b8738a5e9a1bc523390",
+            "result.json": "5377d46bba7e098cfa474eeb17976e07a5ba5916654f69b6025acb9cd57e3ffa",
+            "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+          }
+        }
+      }
+    },
+    {
+      "scenario": {
+        "id": "03-ip-brand-leader",
+        "title": "创新品牌企业画像",
+        "user_request": "分析华为技术有限公司的专利、商标、经营、市场和人才协同情况。",
+        "purpose": "评估创新与品牌资产的结构匹配。",
+        "args": [
+          "--enterprise",
+          "华为技术有限公司",
+          "--keyword-type",
+          "name"
+        ],
+        "expected_checks": [
+          "专利和商标证据分别展示",
+          "创新品牌协同使用可见数据",
+          "风险健康度不等于无风险",
+          "各章节空值处理一致"
+        ],
+        "limitations": [
+          "知识产权数量不等于权利质量",
+          "集团关联主体数据可能不完全归集"
+        ]
+      },
+      "result": {
+        "schema_version": 1,
+        "skill": "full-profile-skill",
+        "case_id": "03-ip-brand-leader",
+        "title": "创新品牌企业画像",
+        "invocation_id": "1793069089316777000",
+        "provenance": {
+          "integrator_id": "683e574805537ace146cc05e",
+          "runner_sha256": "05777c2f2b0791cb5157aef691206606dade8df7af3b17212285b7ae74632a66",
+          "credential_policy_sha256": "bcabf08a1ca92f28357c0e57a8bae9bfa910eb1d4b204d8195ee3b7a77106eed",
+          "scenario_sha256": "cee0fd1153eb2567a0a9e292c96cede200d1e6036e82747d9cf6f4519d418254",
+          "skill_source_hashes": {
+            "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+            "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+            "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+            "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+            "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+            "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+            "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+            "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+          },
+          "upstream_source_hashes": {
+            "enterprise-mcp-server": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          },
+          "upstream_dependency_hashes": {
+            "enterprise-mcp-server/server/mcp_server.py": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server/server/mcp_server.py": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server/server/mcp_server.py": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server/server/mcp_server.py": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server/server/mcp_server.py": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server/server/mcp_server.py": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server/server/mcp_server.py": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server/server/mcp_server.py": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          }
+        },
+        "source_changed_during_run": false,
+        "started_at": "2026-10-27T10:44:49+08:00",
+        "elapsed_seconds": 40.05,
+        "returncode": 0,
+        "exception_type": null,
+        "command": "python3 full-profile-skill/scripts/compose_fusion_report.py --enterprise '华为技术有限公司' --keyword-type name --output full-profile-skill/output/live-replaced-20261027/03-ip-brand-leader/report.json --report-output full-profile-skill/output/live-replaced-20261027/03-ip-brand-leader/report.html",
+        "transport": "local MCP servers via loopback streamable-http",
+        "cache_used": false,
+        "call_count": 23,
+        "successful_data_calls": 18,
+        "empty_calls": 5,
+        "failed_calls": 0,
+        "checks": {
+          "issues": [],
+          "warnings": [],
+          "coverage_pct": 90,
+          "subject": {
+            "enterprise": "华为技术有限公司",
+            "match_raw": "华为技术有限公司",
+            "resolved": true,
+            "resolve_reason": "工商基础信息中的企业名称和统一社会信用代码已返回"
+          },
+          "title": "华为技术有限公司 企业综合画像报告",
+          "data_mode": "live_mcp",
+          "metrics": [
+            {
+              "label": "上游风险评分",
+              "value": "99",
+              "hint": "上游原始口径；若与司法事件数量冲突，不作为低风险背书"
+            },
+            {
+              "label": "对外投资",
+              "value": "54",
+              "hint": "关联方数量（风险传导面）"
+            },
+            {
+              "label": "专利数量",
+              "value": "133237",
+              "hint": "专利公开数量；归属、有效性和质量待核验"
+            },
+            {
+              "label": "商标数量",
+              "value": "22694",
+              "hint": "商标公开数量；归属、状态和类别适用性待核验"
+            },
+            {
+              "label": "招投标参与",
+              "value": "1000",
+              "hint": "公开记录数量；不代表市场强弱或履约结果"
+            },
+            {
+              "label": "舆情总数",
+              "value": "8612",
+              "hint": "正面占比 54%"
+            },
+            {
+              "label": "注册资本",
+              "value": "人民币 411.41亿",
+              "hint": "工商登记注册资本"
+            },
+            {
+              "label": "在招岗位",
+              "value": "6258",
+              "hint": "招聘平台公开数量；不代表经营动能或扩张结果"
+            },
+            {
+              "label": "开庭公告",
+              "value": "4401",
+              "hint": "诉讼开庭记录总数"
+            },
+            {
+              "label": "股东数量",
+              "value": "1",
+              "hint": "工商公示股东数"
+            }
+          ],
+          "quality_report": {
+            "total_sections": 10,
+            "populated_sections": 9,
+            "empty_sections": 1,
+            "coverage_pct": 90,
+            "data_sources": 8,
+            "cross_insights": 3
+          },
+          "unregistered_tools": [],
+          "checks": {
+            "json_html_markdown": true,
+            "explicit_live": true,
+            "tool_calls_recorded": 23,
+            "offline_scripts": true,
+            "independent_rerender": true,
+            "offline_browser": true
+          }
+        },
+        "status": "passed",
+        "source_hashes": {
+          "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+          "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+          "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+          "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+          "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+          "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+          "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+          "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+        },
+        "technical_status": "passed",
+        "audited_at": "2026-10-27T11:13:00+08:00",
+        "evidence_binding": {
+          "report.json": "51ba13ba7244e390518100df98d7685fa127455ba0a1f50f5dc9f947b6de955e",
+          "report.html": "12bc5943f9c6206b58275d8703e6ce71e33cb99b8152dd5df03b81902ff4a1b9",
+          "report.md": "1340ae9b9f5d7fd12aea0e9a1e0323b23c5349822ca48710889c6b47ba12dd18",
+          "calls.json": "97d3e1525f65986ef8368ed853c1503ad76bb6fd44968b377d506562f873f19c",
+          "result.json": "23af464b41ae33c673ce39c61a40e72b30c3acb13f1d23b447880454276b9536",
+          "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+        },
+        "business_review": {
+          "id": "03-ip-brand-leader",
+          "verdict": "acceptable",
+          "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+          "checks": [
+            {
+              "expectation": "专利和商标证据分别展示",
+              "status": "pass",
+              "evidence": "指标分别列专利133237、商标22694；创新章节分别列专利分型、商标总数和类别。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483360107000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=华为技术有限公司，resolved=True；metrics[上游风险评分=99；对外投资=54；专利数量=133237；商标数量=22694；招投标参与=1000；舆情总数=8612；注册资本=人民币 411.41亿；在招岗位=6258；开庭公告=4401；股东数量=1]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=3；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/18)；operation:operation_insight_business_scale=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_financing_info=empty；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(32/32)；enterprise:enterprise_get_enterprise_invest_info=data(50/54)；risk:enterprise_risk_insight_score=data；risk:risk_insight_penalties=empty；risk:risk_insight_court_hearings=data(20/4401)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "创新品牌协同使用可见数据",
+              "status": "pass",
+              "evidence": "交叉洞察引用专利133237、商标22694、45类别，并明确仅为公开记录并存，未外推竞争优势。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483360107000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=华为技术有限公司，resolved=True；metrics[上游风险评分=99；对外投资=54；专利数量=133237；商标数量=22694；招投标参与=1000；舆情总数=8612；注册资本=人民币 411.41亿；在招岗位=6258；开庭公告=4401；股东数量=1]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=3；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/18)；operation:operation_insight_business_scale=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_financing_info=empty；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(32/32)；enterprise:enterprise_get_enterprise_invest_info=data(50/54)；risk:enterprise_risk_insight_score=data；risk:risk_insight_penalties=empty；risk:risk_insight_court_hearings=data(20/4401)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "风险健康度不等于无风险",
+              "status": "pass",
+              "evidence": "开庭4401触发人工核验与不予评级，上游99分标注与司法记录冲突且不作低风险背书。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483360107000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=华为技术有限公司，resolved=True；metrics[上游风险评分=99；对外投资=54；专利数量=133237；商标数量=22694；招投标参与=1000；舆情总数=8612；注册资本=人民币 411.41亿；在招岗位=6258；开庭公告=4401；股东数量=1]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=3；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/18)；operation:operation_insight_business_scale=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_financing_info=empty；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(32/32)；enterprise:enterprise_get_enterprise_invest_info=data(50/54)；risk:enterprise_risk_insight_score=data；risk:risk_insight_penalties=empty；risk:risk_insight_court_hearings=data(20/4401)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "各章节空值处理一致",
+              "status": "pass",
+              "evidence": "融资调用empty后经营章节不造融资值；司法缺案号/主体/日期统一显示“-”，并披露无法逐案去重。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483360107000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=华为技术有限公司，resolved=True；metrics[上游风险评分=99；对外投资=54；专利数量=133237；商标数量=22694；招投标参与=1000；舆情总数=8612；注册资本=人民币 411.41亿；在招岗位=6258；开庭公告=4401；股东数量=1]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=3；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/18)；operation:operation_insight_business_scale=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；operation:operation_insight_financing_info=empty；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_main_person_info=data(32/32)；enterprise:enterprise_get_enterprise_invest_info=data(50/54)；risk:enterprise_risk_insight_score=data；risk:risk_insight_penalties=empty；risk:risk_insight_court_hearings=data(20/4401)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            }
+          ],
+          "issues": [],
+          "evidence_binding": {
+            "report.json": "51ba13ba7244e390518100df98d7685fa127455ba0a1f50f5dc9f947b6de955e",
+            "report.html": "12bc5943f9c6206b58275d8703e6ce71e33cb99b8152dd5df03b81902ff4a1b9",
+            "report.md": "1340ae9b9f5d7fd12aea0e9a1e0323b23c5349822ca48710889c6b47ba12dd18",
+            "calls.json": "97d3e1525f65986ef8368ed853c1503ad76bb6fd44968b377d506562f873f19c",
+            "result.json": "23af464b41ae33c673ce39c61a40e72b30c3acb13f1d23b447880454276b9536",
+            "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+          }
+        }
+      }
+    },
+    {
+      "scenario": {
+        "id": "05-hiring-expansion",
+        "title": "人才扩张型企业画像",
+        "user_request": "对比亚迪股份有限公司做八维画像，重点检查招聘扩张与经营、风险和创新是否匹配。",
+        "purpose": "支持快速扩张企业的综合评估。",
+        "args": [
+          "--enterprise",
+          "比亚迪股份有限公司",
+          "--keyword-type",
+          "name"
+        ],
+        "expected_checks": [
+          "招聘趋势与经营趋势时间口径清楚",
+          "扩张风险判断引用多个域",
+          "专利数量不直接等于研发效率",
+          "综合结论区分事实和推断"
+        ],
+        "limitations": [
+          "招聘岗位不等于实际员工净增长",
+          "产能和现金流不在本报告直接验证"
+        ]
+      },
+      "result": {
+        "schema_version": 1,
+        "skill": "full-profile-skill",
+        "case_id": "05-hiring-expansion",
+        "title": "人才扩张型企业画像",
+        "invocation_id": "1793069091602013000",
+        "provenance": {
+          "integrator_id": "683e574805537ace146cc05e",
+          "runner_sha256": "05777c2f2b0791cb5157aef691206606dade8df7af3b17212285b7ae74632a66",
+          "credential_policy_sha256": "bcabf08a1ca92f28357c0e57a8bae9bfa910eb1d4b204d8195ee3b7a77106eed",
+          "scenario_sha256": "1a2c6e42fd2662c49f8bc681b7437622284d2daf493c9039e1d06dfc03b6454e",
+          "skill_source_hashes": {
+            "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+            "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+            "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+            "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+            "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+            "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+            "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+            "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+          },
+          "upstream_source_hashes": {
+            "enterprise-mcp-server": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          },
+          "upstream_dependency_hashes": {
+            "enterprise-mcp-server/server/mcp_server.py": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server/server/mcp_server.py": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server/server/mcp_server.py": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server/server/mcp_server.py": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server/server/mcp_server.py": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server/server/mcp_server.py": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server/server/mcp_server.py": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server/server/mcp_server.py": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          }
+        },
+        "source_changed_during_run": false,
+        "started_at": "2026-10-27T10:44:51+08:00",
+        "elapsed_seconds": 38.196,
+        "returncode": 0,
+        "exception_type": null,
+        "command": "python3 full-profile-skill/scripts/compose_fusion_report.py --enterprise '比亚迪股份有限公司' --keyword-type name --output full-profile-skill/output/live-replaced-20261027/05-hiring-expansion/report.json --report-output full-profile-skill/output/live-replaced-20261027/05-hiring-expansion/report.html",
+        "transport": "local MCP servers via loopback streamable-http",
+        "cache_used": false,
+        "call_count": 23,
+        "successful_data_calls": 19,
+        "empty_calls": 4,
+        "failed_calls": 0,
+        "checks": {
+          "issues": [],
+          "warnings": [],
+          "coverage_pct": 90,
+          "subject": {
+            "enterprise": "比亚迪股份有限公司",
+            "match_raw": "比亚迪股份有限公司",
+            "resolved": true,
+            "resolve_reason": "工商基础信息中的企业名称和统一社会信用代码已返回"
+          },
+          "title": "比亚迪股份有限公司 企业综合画像报告",
+          "data_mode": "live_mcp",
+          "metrics": [
+            {
+              "label": "上游风险评分",
+              "value": "100",
+              "hint": "上游原始口径；若与司法事件数量冲突，不作为低风险背书"
+            },
+            {
+              "label": "对外投资",
+              "value": "109",
+              "hint": "关联方数量（风险传导面）"
+            },
+            {
+              "label": "专利数量",
+              "value": "46035",
+              "hint": "专利公开数量；归属、有效性和质量待核验"
+            },
+            {
+              "label": "商标数量",
+              "value": "3907",
+              "hint": "商标公开数量；归属、状态和类别适用性待核验"
+            },
+            {
+              "label": "招投标参与",
+              "value": "1000",
+              "hint": "公开记录数量；不代表市场强弱或履约结果"
+            },
+            {
+              "label": "舆情总数",
+              "value": "5131",
+              "hint": "正面占比 30%"
+            },
+            {
+              "label": "注册资本",
+              "value": "人民币 91.17亿",
+              "hint": "工商登记注册资本"
+            },
+            {
+              "label": "融资轮次",
+              "value": "7",
+              "hint": "历史融资轮次"
+            },
+            {
+              "label": "在招岗位",
+              "value": "126960",
+              "hint": "招聘平台公开数量；不代表经营动能或扩张结果"
+            },
+            {
+              "label": "开庭公告",
+              "value": "298",
+              "hint": "诉讼开庭记录总数"
+            },
+            {
+              "label": "股东数量",
+              "value": "2",
+              "hint": "工商公示股东数"
+            }
+          ],
+          "quality_report": {
+            "total_sections": 10,
+            "populated_sections": 9,
+            "empty_sections": 1,
+            "coverage_pct": 90,
+            "data_sources": 8,
+            "cross_insights": 3
+          },
+          "unregistered_tools": [],
+          "checks": {
+            "json_html_markdown": true,
+            "explicit_live": true,
+            "tool_calls_recorded": 23,
+            "offline_scripts": true,
+            "independent_rerender": true,
+            "offline_browser": true
+          }
+        },
+        "status": "passed",
+        "source_hashes": {
+          "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+          "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+          "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+          "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+          "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+          "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+          "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+          "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+        },
+        "technical_status": "passed",
+        "audited_at": "2026-10-27T11:13:00+08:00",
+        "evidence_binding": {
+          "report.json": "1413519c5d42332bb5727cc4f7149304ee8cc4ea913fb2f98a0dd723133b6046",
+          "report.html": "d213fccc5daac1dca2f53ab8f86217218cb409249b0fff2acb2426c758fcad59",
+          "report.md": "64acffb8144dfcadd2648e3419b8be1ee9f84a0b366a4a72f2a0cb8be29e20be",
+          "calls.json": "05054bb8fc0bc34da6cdc1bbde41405eb6e9766bb8901d4a34bad682583ebea8",
+          "result.json": "9ae04fec7bbb3843f70e00efefaba77a09022336593d9b3fba5ad1132ab054ac",
+          "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+        },
+        "business_review": {
+          "id": "05-hiring-expansion",
+          "verdict": "acceptable",
+          "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+          "checks": [
+            {
+              "expectation": "招聘趋势与经营趋势时间口径清楚",
+              "status": "pass",
+              "evidence": "招聘标为“当前/近三月”并声明无精确起止日期；经营章节仅列规模/融资/上榜，不伪造同周期趋势。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483907439000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=19；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=109；专利数量=46035；商标数量=3907；招投标参与=1000；舆情总数=5131；注册资本=人民币 91.17亿；融资轮次=7；在招岗位=126960；开庭公告=298]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/298)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "扩张风险判断引用多个域",
+              "status": "pass",
+              "evidence": "洞察同时引用招聘125052、融资7、开庭298与限高0，并由司法暴露触发人工核验。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483907439000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=19；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=109；专利数量=46035；商标数量=3907；招投标参与=1000；舆情总数=5131；注册资本=人民币 91.17亿；融资轮次=7；在招岗位=126960；开庭公告=298]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/298)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "专利数量不直接等于研发效率",
+              "status": "pass",
+              "evidence": "专利46035仅作为公开数量；章节和洞察均声明缺权属、有效性、质量、投入与转化，不能推断技术竞争优势。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483907439000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=19；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=109；专利数量=46035；商标数量=3907；招投标参与=1000；舆情总数=5131；注册资本=人民币 91.17亿；融资轮次=7；在招岗位=126960；开庭公告=298]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/298)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "综合结论区分事实和推断",
+              "status": "pass",
+              "evidence": "insights明确分evidence与interpretation，verdict只作司法核验而非扩张/健康评级。 当前第五轮result.started_at=2026-10-26T18:44:43+08:00，invocation_id=1793011483907439000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=19；subject.enterprise=比亚迪股份有限公司，resolved=True；metrics[上游风险评分=100；对外投资=109；专利数量=46035；商标数量=3907；招投标参与=1000；舆情总数=5131；注册资本=人民币 91.17亿；融资轮次=7；在招岗位=126960；开庭公告=298]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[news:news_bigdata_news_stats=data；patent:patent_bigdata_patent_stats=data；bidding:bid_bigdata_bid_win_stats=data；bidding:bid_bigdata_bidding_info=data(20/1000)；recruitment:recruitment_trend=data；recruitment:recruitment_employer_profile=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=data(10/76)；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(50/109)；enterprise:enterprise_get_enterprise_main_person_info=data(6/6)；risk:enterprise_risk_insight_score=data；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_court_hearings=data(20/298)；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            }
+          ],
+          "issues": [],
+          "evidence_binding": {
+            "report.json": "1413519c5d42332bb5727cc4f7149304ee8cc4ea913fb2f98a0dd723133b6046",
+            "report.html": "d213fccc5daac1dca2f53ab8f86217218cb409249b0fff2acb2426c758fcad59",
+            "report.md": "64acffb8144dfcadd2648e3419b8be1ee9f84a0b366a4a72f2a0cb8be29e20be",
+            "calls.json": "05054bb8fc0bc34da6cdc1bbde41405eb6e9766bb8901d4a34bad682583ebea8",
+            "result.json": "9ae04fec7bbb3843f70e00efefaba77a09022336593d9b3fba5ad1132ab054ac",
+            "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+          }
+        }
+      }
+    },
+    {
+      "scenario": {
+        "id": "07-platform-company",
+        "title": "平台企业综合画像",
+        "user_request": "分析京东科技信息技术有限公司的经营、创新、品牌、舆情和招聘信号。",
+        "purpose": "为平台型企业合作评估建立基线。",
+        "args": [
+          "--enterprise",
+          "京东科技信息技术有限公司",
+          "--keyword-type",
+          "name"
+        ],
+        "expected_checks": [
+          "企业主体解析准确",
+          "品牌与关联集团不无依据混同",
+          "舆情与风险维度分别展示",
+          "证据不足维度降低置信度"
+        ],
+        "limitations": [
+          "关联集团数据可能无法完整归属",
+          "平台业务细分表现不在统一报告中拆分"
+        ]
+      },
+      "result": {
+        "schema_version": 1,
+        "skill": "full-profile-skill",
+        "case_id": "07-platform-company",
+        "title": "平台企业综合画像",
+        "invocation_id": "1793069129526620000",
+        "provenance": {
+          "integrator_id": "683e574805537ace146cc05e",
+          "runner_sha256": "05777c2f2b0791cb5157aef691206606dade8df7af3b17212285b7ae74632a66",
+          "credential_policy_sha256": "bcabf08a1ca92f28357c0e57a8bae9bfa910eb1d4b204d8195ee3b7a77106eed",
+          "scenario_sha256": "4ae062f8e70f529b7698ca0525bca8ba1783d880eefc976f60e0caf36cc63550",
+          "skill_source_hashes": {
+            "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+            "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+            "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+            "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+            "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+            "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+            "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+            "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+          },
+          "upstream_source_hashes": {
+            "enterprise-mcp-server": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          },
+          "upstream_dependency_hashes": {
+            "enterprise-mcp-server/server/mcp_server.py": "09953383194a4e48706af21c2c5b2c6e728f20df35c8c8c2f53c8d8f6c81e722",
+            "enterprise-risk-mcp-server/server/mcp_server.py": "4746f577771186ab453261234ba8cd230cae4398d4a2780776019aecf5b2cc6b",
+            "enterprise-operation-mcp-server/server/mcp_server.py": "46af6307784e60a051c16fb45a890979a4c994ff26c50af6cec85b3117619a49",
+            "patent-mcp-server/server/mcp_server.py": "6415af144978311c545a4ba5e914de3b1b192eb6b667f2398faaa0e7d599e485",
+            "trademark-mcp-server/server/mcp_server.py": "8540e21cd293a850b8a1fe2fcbe8ede0d125ef7b41fb30296fd961975c4462d8",
+            "bidding-mcp-server/server/mcp_server.py": "76ed472a6796e09d7ef7098f4b4f8e18f252a033aa0b0642b40a9920bcc0f7b1",
+            "news-mcp-server/server/mcp_server.py": "e1ef4df6b49d8e02d53fd98a1576243ce2a8ba8a534e8dab92f9f7af23f55a5f",
+            "recruitment-mcp-server/server/mcp_server.py": "3f299f6fb326d3a9bfb97e6b2a36091fe064e04bc3d68dfcd388f12a4f2826a6"
+          }
+        },
+        "source_changed_during_run": false,
+        "started_at": "2026-10-27T10:45:29+08:00",
+        "elapsed_seconds": 10.14,
+        "returncode": 0,
+        "exception_type": null,
+        "command": "python3 full-profile-skill/scripts/compose_fusion_report.py --enterprise '京东科技信息技术有限公司' --keyword-type name --output full-profile-skill/output/live-replaced-20261027/07-platform-company/report.json --report-output full-profile-skill/output/live-replaced-20261027/07-platform-company/report.html",
+        "transport": "local MCP servers via loopback streamable-http",
+        "cache_used": false,
+        "call_count": 23,
+        "successful_data_calls": 18,
+        "empty_calls": 5,
+        "failed_calls": 0,
+        "checks": {
+          "issues": [],
+          "warnings": [],
+          "coverage_pct": 90,
+          "subject": {
+            "enterprise": "京东科技信息技术有限公司",
+            "match_raw": "京东科技信息技术有限公司",
+            "resolved": true,
+            "resolve_reason": "工商基础信息中的企业名称和统一社会信用代码已返回"
+          },
+          "title": "京东科技信息技术有限公司 企业综合画像报告",
+          "data_mode": "live_mcp",
+          "metrics": [
+            {
+              "label": "上游风险评分",
+              "value": "100",
+              "hint": "上游原始口径；若与司法事件数量冲突，不作为低风险背书"
+            },
+            {
+              "label": "对外投资",
+              "value": "9",
+              "hint": "关联方数量（风险传导面）"
+            },
+            {
+              "label": "专利数量",
+              "value": "4213",
+              "hint": "专利公开数量；归属、有效性和质量待核验"
+            },
+            {
+              "label": "商标数量",
+              "value": "16",
+              "hint": "商标公开数量；归属、状态和类别适用性待核验"
+            },
+            {
+              "label": "招投标参与",
+              "value": "804",
+              "hint": "公开记录数量；不代表市场强弱或履约结果"
+            },
+            {
+              "label": "舆情总数",
+              "value": "393",
+              "hint": "正面占比 58%"
+            },
+            {
+              "label": "注册资本",
+              "value": "人民币 3.00亿",
+              "hint": "工商登记注册资本"
+            },
+            {
+              "label": "融资轮次",
+              "value": "1",
+              "hint": "历史融资轮次"
+            },
+            {
+              "label": "在招岗位",
+              "value": "31",
+              "hint": "招聘平台公开数量；不代表经营动能或扩张结果"
+            },
+            {
+              "label": "开庭公告",
+              "value": "33",
+              "hint": "诉讼开庭记录总数"
+            },
+            {
+              "label": "股东数量",
+              "value": "1",
+              "hint": "工商公示股东数"
+            }
+          ],
+          "quality_report": {
+            "total_sections": 10,
+            "populated_sections": 9,
+            "empty_sections": 1,
+            "coverage_pct": 90,
+            "data_sources": 8,
+            "cross_insights": 3
+          },
+          "unregistered_tools": [],
+          "checks": {
+            "json_html_markdown": true,
+            "explicit_live": true,
+            "tool_calls_recorded": 23,
+            "offline_scripts": true,
+            "independent_rerender": true,
+            "offline_browser": true
+          }
+        },
+        "status": "passed",
+        "source_hashes": {
+          "scripts/common.py": "caf758f66bad0e8621f9e56206eac36dac5ab6f35f7ea91311fea31f6040e487",
+          "scripts/compose_direct.py": "b359b954c2af189f6904f6708c4b0b3a67c670511b7a408604bb671453b84b88",
+          "scripts/compose_fusion_report.py": "13010191501f0815370c96fe89da4d2df570a508563bbafe7ce6ab2a1f8f1734",
+          "scripts/cross_analysis.py": "55303b4258311d7f043b2c6f5d0b5dd06eb3751fffa7900e0d81ffaf344f4b1f",
+          "scripts/fusion_engine.py": "d50fecf6e3365bf639690a025011934a761cae1dc709ad1a9effb5bf93f409d3",
+          "scripts/mcp_orchestration.py": "ebf942e7d873d696b9752e6708278e57c8c01d1adcb59b63b003ff081b64853b",
+          "scripts/multi_mcp_client.py": "36520fef0ba8743e4547d7033c3e5f1504c48f4d6a9e804b42192d39504ca93b",
+          "scripts/render_report.py": "e57707f5cae201c126ea9a66c428d53a4571e4f15d8c05d147f2885de908926b"
+        },
+        "technical_status": "passed",
+        "audited_at": "2026-10-27T11:13:00+08:00",
+        "evidence_binding": {
+          "report.json": "e64fd096e6b25a35bf6b2745e3dabdaf4d08f90f8a591383421782a14da0f894",
+          "report.html": "6ef98d55a01a266433379d2cb686ed6a52b8ed04e924c85abc0203ce82d5d744",
+          "report.md": "666c6e2d0587b73d94b6e76862d6d64346983c7a1a64f7d9fd3c5bdc10a0225a",
+          "calls.json": "e116a8f38f5baf654730e96cb0d4fbedd4131df08b0a6c96ccf5028a71162cab",
+          "result.json": "25c21bf49f0d26b2e9f5cda792d6cbed539946f94ae50a648cdc350909b71f86",
+          "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+        },
+        "business_review": {
+          "id": "07-platform-company",
+          "verdict": "acceptable",
+          "summary": "当前冻结产物逐项满足场景契约；结论仅限本轮公开数据和报告口径。",
+          "checks": [
+            {
+              "expectation": "企业主体解析准确",
+              "status": "pass",
+              "evidence": "subject、match_raw、工商企业名均为京东科技信息技术有限公司，并有统一信用代码91110108MA00G9F39B。 当前第五轮result.started_at=2026-10-26T18:45:14+08:00，invocation_id=1793011514748258000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=京东科技信息技术有限公司，resolved=True；metrics[上游风险评分=100；对外投资=9；专利数量=4213；商标数量=16；招投标参与=804；舆情总数=393；注册资本=人民币 3.00亿；融资轮次=1；在招岗位=31；开庭公告=33]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[patent:patent_bigdata_patent_stats=data；news:news_bigdata_news_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bidding_info=data(20/804)；bidding:bid_bigdata_bid_win_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=empty；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(9/9)；enterprise:enterprise_get_enterprise_main_person_info=data(3/3)；risk:enterprise_risk_insight_score=data；risk:risk_insight_court_hearings=data(20/33)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "品牌与关联集团不无依据混同",
+              "status": "pass",
+              "evidence": "商标/专利只按目标法人具名检索，洞察明确权利人与目标法人关系未逐项核验；股东京东云计算另列。 当前第五轮result.started_at=2026-10-26T18:45:14+08:00，invocation_id=1793011514748258000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=京东科技信息技术有限公司，resolved=True；metrics[上游风险评分=100；对外投资=9；专利数量=4213；商标数量=16；招投标参与=804；舆情总数=393；注册资本=人民币 3.00亿；融资轮次=1；在招岗位=31；开庭公告=33]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[patent:patent_bigdata_patent_stats=data；news:news_bigdata_news_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bidding_info=data(20/804)；bidding:bid_bigdata_bid_win_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=empty；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(9/9)；enterprise:enterprise_get_enterprise_main_person_info=data(3/3)；risk:enterprise_risk_insight_score=data；risk:risk_insight_court_hearings=data(20/33)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "舆情与风险维度分别展示",
+              "status": "pass",
+              "evidence": "舆情总数393/正面58%为独立指标；风险另列开庭32及样本，不以舆情替代风险。 当前第五轮result.started_at=2026-10-26T18:45:14+08:00，invocation_id=1793011514748258000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=京东科技信息技术有限公司，resolved=True；metrics[上游风险评分=100；对外投资=9；专利数量=4213；商标数量=16；招投标参与=804；舆情总数=393；注册资本=人民币 3.00亿；融资轮次=1；在招岗位=31；开庭公告=33]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[patent:patent_bigdata_patent_stats=data；news:news_bigdata_news_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bidding_info=data(20/804)；bidding:bid_bigdata_bid_win_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=empty；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(9/9)；enterprise:enterprise_get_enterprise_main_person_info=data(3/3)；risk:enterprise_risk_insight_score=data；risk:risk_insight_court_hearings=data(20/33)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            },
+            {
+              "expectation": "证据不足维度降低置信度",
+              "status": "pass",
+              "evidence": "verdict为“事实观察（不评分）/逐项人工核验”，caliber披露权属、行业和财务审计限制。 当前第五轮result.started_at=2026-10-26T18:45:14+08:00，invocation_id=1793011514748258000；calls=23，HTML/MD均含当前标题。；本轮当前产物：technical=passed，successful_data_calls=18；subject.enterprise=京东科技信息技术有限公司，resolved=True；metrics[上游风险评分=100；对外投资=9；专利数量=4213；商标数量=16；招投标参与=804；舆情总数=393；注册资本=人民币 3.00亿；融资轮次=1；在招岗位=31；开庭公告=33]；quality={'total_sections': 10, 'populated_sections': 9, 'empty_sections': 1, 'coverage_pct': 90, 'data_sources': 8, 'cross_insights': 3}；非空章节=['工商基础信息', '股东出资结构', '对外投资清单（关联方敞口）', '专利与商标公开统计', '招投标公开统计', '风险维度统计', '开庭公告明细', '经营规模与资本运作', '招聘公开统计']；代表记录=4；calls[patent:patent_bigdata_patent_stats=data；news:news_bigdata_news_stats=data；trademark:trademark_bigdata_trademark_profile=data；trademark:trademark_bigdata_trademark_stats=data；bidding:bid_bigdata_bidding_info=data(20/804)；bidding:bid_bigdata_bid_win_stats=data；recruitment:recruitment_employer_profile=data；recruitment:recruitment_trend=data；operation:operation_insight_business_scale=data；operation:operation_insight_financing_info=data；operation:operation_insight_company_trends=data；operation:operation_insight_enterprise_rankings=empty；enterprise:enterprise_get_enterprise_base_info=data；enterprise:enterprise_get_enterprise_holder_info=data；enterprise:enterprise_get_enterprise_invest_info=data(9/9)；enterprise:enterprise_get_enterprise_main_person_info=data(3/3)；risk:enterprise_risk_insight_score=data；risk:risk_insight_court_hearings=data(20/33)；risk:risk_insight_litigation_risk_profile=data；risk:risk_insight_penalties=empty；risk:risk_insight_business_anomalies=empty；risk:risk_insight_consumption_restrictions=empty；risk:risk_insight_chattel_mortgage=empty]"
+            }
+          ],
+          "issues": [],
+          "evidence_binding": {
+            "report.json": "e64fd096e6b25a35bf6b2745e3dabdaf4d08f90f8a591383421782a14da0f894",
+            "report.html": "6ef98d55a01a266433379d2cb686ed6a52b8ed04e924c85abc0203ce82d5d744",
+            "report.md": "666c6e2d0587b73d94b6e76862d6d64346983c7a1a64f7d9fd3c5bdc10a0225a",
+            "calls.json": "e116a8f38f5baf654730e96cb0d4fbedd4131df08b0a6c96ccf5028a71162cab",
+            "result.json": "25c21bf49f0d26b2e9f5cda792d6cbed539946f94ae50a648cdc350909b71f86",
+            "source_manifest_sha256": "014e0c39ccd221d4b037bfafc75dc705b73521da54c003be18fa8ca62d4dab92"
+          }
+        }
+      }
+    }
+  ]
+}
