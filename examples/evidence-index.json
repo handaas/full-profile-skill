@@ -17,7 +17,7 @@
         "business-review.json": "c9b59912d82508da07cfb7b3c80484bcc3dab7b23c63cd669b617622610064de",
         "browser-check.json": "797d09ef5d6f333e6e5f5e88d3f8bc4d2f3f5cc8ca7fbed9ed9404fe2fc48cb3"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/01-investment-profile.md"
+      "audit_record": "../test-records/live-replaced-20261027/01-investment-profile.md"
     },
     {
       "skill": "full-profile-skill",
@@ -35,7 +35,7 @@
         "business-review.json": "53e04e5bd2fe772ce8790ea731054f1087366fd4ae25334b3d9913db39920086",
         "browser-check.json": "434f47e9f32879855a163107d4619c1f24efc69280541144835403f33befc9ad"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/02-high-risk-profile.md"
+      "audit_record": "../test-records/live-replaced-20261027/02-high-risk-profile.md"
     },
     {
       "skill": "full-profile-skill",
@@ -53,7 +53,7 @@
         "business-review.json": "0fa7a915cf058f22037c75aa559735453f3a5aabf88cfb3fb04b196d4f0a82e5",
         "browser-check.json": "38df94331b54c6b33554d5224ce5c8c95fa7bc1c4a53dd485de83c2a60dd17b4"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/03-ip-brand-leader.md"
+      "audit_record": "../test-records/live-replaced-20261027/03-ip-brand-leader.md"
     },
     {
       "skill": "full-profile-skill",
@@ -71,7 +71,7 @@
         "business-review.json": "a1ba233bdb639a1510f0c8e3cf943a655e3bec7bb01bf9e9f1d5f692ffc7cd24",
         "browser-check.json": "5a0d53bc76e73e8dcebe8508d2e664842ce6458803f47550ec9dd99f6cb0ec46"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/05-hiring-expansion.md"
+      "audit_record": "../test-records/live-replaced-20261027/05-hiring-expansion.md"
     },
     {
       "skill": "full-profile-skill",
@@ -89,7 +89,7 @@
         "business-review.json": "3a33c316c27e1ebda43d4fa4432c6ed58b273aa74f447298149639094efdcb31",
         "browser-check.json": "f02f3c16f80f55d2b11dd510f31f420d3b4f80cbc0dd7178dbd81c6ec0091a7d"
       },
-      "audit_record": "../../test-records/live-replaced-20261027/07-platform-company.md"
+      "audit_record": "../test-records/live-replaced-20261027/07-platform-company.md"
     }
   ]
 }
