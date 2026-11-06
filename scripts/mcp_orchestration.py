@@ -790,13 +790,20 @@ def normalize_mcp(raw: Mapping[str, Any]) -> Dict[str, Any]:
             for b in bidding_info_list
             if isinstance(b, dict) and b.get("text") != "查询数据为空"
         ]
+        winning = _first_list(bid_stats_raw.get("winbidStatList"))
+        bid_win_count = sum(
+            _int(item.get("count")) or 0
+            for item in winning
+            if isinstance(item, dict)
+        )
         bidding = {
             "winbidAmountStatList": _first_list(
                 bid_stats_raw.get("winbidAmountStatList")
             ),
             "winbidAreaStat": _first_list(bid_stats_raw.get("winbidAreaStat")),
-            "winbidStatList": _first_list(bid_stats_raw.get("winbidStatList")),
+            "winbidStatList": winning,
             "winbidTrend": _first_list(bid_stats_raw.get("winbidTrend")),
+            "winbidCount": bid_win_count or None,
             "bidding_info": bidding_info_list,
             "bidding_total": _safe_total(bid_info_raw) or len(bidding_info_list),
         }
@@ -950,11 +957,16 @@ def normalize_reports(
 
     # bidding
     bc = _ca(br)
+    winning = _first_list(bc.get("winbidStatList"))
     bidding = {
         "winbidAmountStatList": _first_list(bc.get("winbidAmountStatList")),
         "winbidAreaStat": _first_list(bc.get("winbidAreaStat")),
-        "winbidStatList": _first_list(bc.get("winbidStatList")),
+        "winbidStatList": winning,
         "winbidTrend": _first_list(bc.get("winbidTrend")),
+        "winbidCount": sum(
+            _int(item.get("count")) or 0 for item in winning if isinstance(item, dict)
+        )
+        or None,
         "bidding_info": bc.get("bidding_info") or [],
         "bidding_total": _metric_int(br, "招投标参与数"),
     }

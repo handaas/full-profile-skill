@@ -13,6 +13,7 @@ unchanged.
 from __future__ import annotations
 
 import datetime as dt
+import json
 import sys
 from typing import Any, Dict, List, Mapping, Optional
 
@@ -135,6 +136,23 @@ def _hearing_rows(data: Mapping[str, Any]) -> List[Dict[str, Any]]:
     return rows
 
 
+def _hearing_note(data: Mapping[str, Any], rows: List[Dict[str, Any]]) -> str:
+    total = _risk(data).get("court_hearings_total")
+    total_text = total if total is not None else "未知"
+    fields = ("案号", "开庭/发布日期", "相关主体")
+    retained = [
+        label for label in fields if any(str(row.get(label) or "-") != "-" for row in rows)
+    ]
+    if retained:
+        retention = "；上游已返回 " + "、".join(retained) + "，可用于人工去重"
+    else:
+        retention = "；上游未返回案号/日期/主体，无法逐案去重"
+    return (
+        f"报告总量 {total_text} 条（当前展示 {len(rows)} 条）"
+        f"{retention}；展示条数不等于去重后案件数"
+    )
+
+
 def _patent_kv(data: Mapping[str, Any]) -> Dict[str, str]:
     pat = _patent(data)
     out: Dict[str, str] = {}
@@ -185,11 +203,14 @@ def _bidding_kv(data: Mapping[str, Any]) -> Dict[str, str]:
 def _news_kv(data: Mapping[str, Any]) -> Dict[str, str]:
     news = _news(data)
     out: Dict[str, str] = {}
-    stats = news.get("sentiment_stats") or {}
+    # Live and cached normalizers use different keys; accept both instead of
+    # silently dropping the whole 舆情 section.
+    stats = news.get("sentiment_stats") or news.get("newsSentimentStats") or {}
     for label, key in [
         ("正面舆情", "positive"),
         ("负面舆情", "negative"),
         ("中立舆情", "neutral"),
+        ("未知情感", "unknown"),
     ]:
         v = _i(stats.get(key))
         if v is not None:
@@ -224,30 +245,273 @@ def _recruitment_kv(data: Mapping[str, Any]) -> Dict[str, str]:
         v = _i(rec.get(key))
         if v is not None:
             out[label] = str(v)
+    current = _i(rec.get("current"))
+    last3 = _i(rec.get("last_3m"))
+    if current is not None and last3 is not None and current == last3:
+        out["窗口口径"] = (
+            "上游当前值与近三月值相同，两个时间窗口不可区分；"
+            "不能视为两次独立招聘信号"
+        )
     sal = rec.get("avg_salary")
     if sal not in (None, "", "-"):
         try:
-            out["平均薪酬"] = f"{float(str(sal).replace(',', '')):.0f} 元/月"
+            out["平均薪酬"] = f"{float(str(sal).replace(',', '')):.2f} 元/月"
         except (TypeError, ValueError):
             out["平均薪酬"] = str(sal)
     welfare = rec.get("welfare") or []
     if welfare:
-        out["福利项数"] = str(len(welfare))
+        out["福利标签"] = "、".join(str(x) for x in welfare if x)
     return out
 
 
 # --------------------------------------------------------------------------- #
 # Payload assembly
 # --------------------------------------------------------------------------- #
+def _call_numbers(calls: Any) -> Dict[str, Any]:
+    numbers: Dict[str, Any] = {}
+    win_counts: List[int] = []
+    if not isinstance(calls, list):
+        return numbers
+    for call in calls:
+        if not isinstance(call, dict):
+            continue
+        for evidence in call.get("numeric_evidence") or []:
+            if not isinstance(evidence, dict):
+                continue
+            path = str(evidence.get("path") or "")
+            value = evidence.get("value")
+            if path in (
+                "newsSentimentStats.positive",
+                "newsSentimentStats.negative",
+                "newsSentimentStats.neutral",
+                "newsSentimentStats.unknown",
+            ):
+                numbers[path.rsplit(".", 1)[-1]] = _i(value)
+            elif path.startswith("winbidStatList[") and path.endswith(".count"):
+                count = _i(value)
+                if count is not None:
+                    win_counts.append(count)
+    if win_counts:
+        numbers["winbidCount"] = sum(win_counts)
+    return numbers
+
+
+def _quality_nonempty(value: Any) -> bool:
+    """0/False are real values; only None/''/[]/{} count as empty."""
+    if value is None or value == "":
+        return False
+    if isinstance(value, dict):
+        return any(_quality_nonempty(v) for v in value.values())
+    if isinstance(value, (list, tuple)):
+        return any(_quality_nonempty(v) for v in value)
+    return True
+
+
+def _refresh_quality_report(report: Dict[str, Any]) -> None:
+    data_source = report.get("data_source")
+    core = report.get("core_analysis")
+    if not isinstance(data_source, dict) or not isinstance(core, dict):
+        return
+    sections = core.get("sections")
+    if not isinstance(sections, list):
+        return
+    declared = [s for s in sections if isinstance(s, dict)]
+    populated = sum(
+        1 for section in declared if _quality_nonempty(core.get(section.get("key")))
+    )
+    quality = data_source.get("quality_report")
+    if not isinstance(quality, dict):
+        quality = {}
+    # The composer declares every section it attempted before empty bodies are
+    # dropped. Keep that declared total so a review pass cannot turn missing
+    # dimensions into a false 100% coverage; grow it only when a section was
+    # added, and fall back to the current count for foreign payloads.
+    try:
+        previous_total = int(quality.get("total_sections") or 0)
+    except (TypeError, ValueError):
+        previous_total = 0
+    total = max(len(declared), populated, previous_total)
+    quality["total_sections"] = total
+    quality["populated_sections"] = populated
+    quality["empty_sections"] = max(0, total - populated)
+    quality["coverage_pct"] = round(populated / total * 100) if total else 0
+    data_source["quality_report"] = quality
+
+
+def apply_content_review(
+    report: Mapping[str, Any], calls: Any = None
+) -> Dict[str, Any]:
+    """Offline content repair for a frozen full-profile report.
+
+    ``calls`` is optional frozen calls.json evidence. When supplied, it restores
+    the 舆情 section and negative/win counts that the old composer dropped; no
+    MCP call is made.
+    """
+    reviewed = json.loads(json.dumps(report, ensure_ascii=False))
+    old_conflict = "上游原等级与司法记录冲突待核验"
+    new_conflict = "上游风险等级未在报告中保留；司法暴露需人工核验"
+    for key in ("abstract", "summary"):
+        if old_conflict in str(reviewed.get(key) or ""):
+            reviewed[key] = str(reviewed[key]).replace(old_conflict, new_conflict)
+    verdict = reviewed.get("verdict")
+    if isinstance(verdict, dict):
+        for key in ("summary", "level"):
+            if old_conflict in str(verdict.get(key) or ""):
+                verdict[key] = str(verdict[key]).replace(old_conflict, new_conflict)
+    for metric in reviewed.get("metrics") or []:
+        if metric.get("label") == "上游风险评分":
+            metric["hint"] = (
+                "上游原始评分；接口未返回阈值/方向说明，"
+                "存在司法暴露时不得解读为低风险"
+            )
+    for record in reviewed.get("representative_records") or []:
+        if old_conflict in str(record.get("关键记录") or ""):
+            record["关键记录"] = str(record["关键记录"]).replace(
+                old_conflict, new_conflict
+            )
+
+    core = reviewed.get("core_analysis")
+    if isinstance(core, dict):
+        rec = core.get("fp_recruitment")
+        if isinstance(rec, dict):
+            current = _i(rec.get("当前在招"))
+            last3 = _i(rec.get("近三月招聘"))
+            if current is not None and last3 is not None and current == last3:
+                rec["窗口口径"] = (
+                    "上游当前值与近三月值相同，两个时间窗口不可区分；"
+                    "不能视为两次独立招聘信号"
+                )
+            salary = rec.get("平均薪酬")
+            try:
+                rec["平均薪酬"] = f"{float(str(salary).replace(',', '')):.2f} 元/月"
+            except (TypeError, ValueError):
+                pass
+        hearing_rows = core.get("fp_hearings")
+        if isinstance(hearing_rows, list):
+            retained = [
+                label
+                for label in ("案号", "开庭/发布日期", "相关主体")
+                if any(str(row.get(label) or "-") != "-" for row in hearing_rows)
+            ]
+            for section in core.get("sections") or []:
+                if section.get("key") == "fp_hearings":
+                    section["note"] = (
+                        "展示条数不等于去重后案件数；"
+                        + (
+                            "上游已返回 " + "、".join(retained) + "，可用于人工去重"
+                            if retained
+                            else "上游未返回案号/日期/主体，无法逐案去重"
+                        )
+                    )
+        subject = reviewed.get("subject") or {}
+        # An unconfirmed subject is a same-name search lead; do not attach
+        # calls.json facts to it.
+        numbers = (
+            _call_numbers(calls) if subject.get("resolved") is not False else {}
+        )
+        sentiment = {
+            label: numbers.get(key)
+            for key, label in (
+                ("positive", "正面舆情"),
+                ("negative", "负面舆情"),
+                ("neutral", "中立舆情"),
+                ("unknown", "未知情感"),
+            )
+            if numbers.get(key) is not None
+        }
+        if sentiment and "fp_news" not in core:
+            core["fp_news"] = sentiment
+            sections = core.get("sections")
+            if isinstance(sections, list):
+                spec = {
+                    "key": "fp_news",
+                    "title": "舆情健康度",
+                    "kind": "kv",
+                    "note": "正面/负面/中立情感分布；需复核样本、时间和相关性",
+                }
+                index = next(
+                    (
+                        i
+                        for i, section in enumerate(sections)
+                        if section.get("key") == "fp_risk_dims"
+                    ),
+                    len(sections),
+                )
+                sections.insert(index, spec)
+            quality = (reviewed.get("data_source") or {}).get("quality_report")
+            if isinstance(quality, dict):
+                total = int(quality.get("total_sections") or len(sections or []))
+                populated = int(quality.get("populated_sections") or 0) + 1
+                quality["populated_sections"] = populated
+                quality["empty_sections"] = max(0, total - populated)
+                quality["coverage_pct"] = round(populated / total * 100) if total else 0
+        negative = numbers.get("negative")
+        if negative is not None and not any(
+            m.get("label") == "负面舆情" for m in reviewed.get("metrics") or []
+        ):
+            reviewed.setdefault("metrics", []).append(
+                {
+                    "label": "负面舆情",
+                    "value": str(negative),
+                    "hint": "负面情感条数；需复核样本、时间和相关性，不作法律定性",
+                }
+            )
+        win_count = numbers.get("winbidCount")
+        if win_count is not None:
+            bidding_kv = core.get("fp_bidding")
+            if isinstance(bidding_kv, dict) and "中标次数" not in bidding_kv:
+                bidding_kv["中标次数"] = str(win_count)
+            for metric in reviewed.get("metrics") or []:
+                if metric.get("label") == "招投标参与" and metric.get("hint") == "市场活跃度信号":
+                    metric["hint"] = "招投标公开记录数，不等同中标次数"
+                if metric.get("label") == "中标记录":
+                    break
+            else:
+                reviewed.setdefault("metrics", []).append(
+                    {
+                        "label": "中标记录",
+                        "value": str(win_count),
+                        "hint": "中标标的统计合计；不代表收入、履约或市场份额",
+                    }
+                )
+    caliber = reviewed.get("caliber")
+    if isinstance(caliber, dict):
+        scope = str(caliber.get("data_scope") or "")
+        sections = (reviewed.get("core_analysis") or {}).get("sections") or []
+        parts = scope.split("个明细章节")
+        if len(parts) == 2 and isinstance(sections, list):
+            prefix = parts[0].rstrip()
+            digits = ""
+            for char in reversed(prefix):
+                if not char.isdigit():
+                    break
+                digits = char + digits
+            if digits:
+                caliber["data_scope"] = (
+                    f"{prefix[:-len(digits)]}{len(sections)}"
+                    f" 个明细章节{parts[1]}"
+                )
+        note = "内容整理仅使用报告及既有调用记录中的字段，未新增推断。"
+        if note not in str(caliber.get("limit") or ""):
+            caliber["limit"] = str(caliber.get("limit") or "") + note
+    _refresh_quality_report(reviewed)
+    return reviewed
+
+
 def build_direct_payload(
     enterprise: str, keyword_type: str, *, dry_run: bool, skills_root: str,
-    max_pages: Optional[int] = None,
+    max_pages: Optional[int] = None, calls: Any = None,
 ) -> Dict[str, Any]:
     data = orch.collect_direct(
         enterprise, keyword_type, dry_run=dry_run, skills_root=skills_root,
         detail_max_pages=max_pages,
     )
     meta = data.get("_meta") or {}
+    evidence = calls
+    if evidence is None:
+        evidence = data.get("calls")
+    if evidence is None:
+        evidence = meta.get("calls")
     resolved = meta.get("resolved") or {}
     canon = resolved.get("enterprise") or enterprise
     errors = meta.get("errors") or {}
@@ -289,6 +553,8 @@ def build_direct_payload(
         "在招岗位",
         "限制高消费",
         "开庭公告",
+        "负面舆情",
+        "中标记录",
         "经营异常",
         "股东数量",
     }
@@ -313,11 +579,21 @@ def build_direct_payload(
         and not (judicial_exposure and "上游风险等级" in str(item))
     ]
     verdict["specialty_average"] = None
-    risk_level_display = (
-        "上游原等级与司法记录冲突待核验"
-        if judicial_exposure
-        else (_risk(data).get("level") or "-")
-    )
+    upstream_level = str(_risk(data).get("level") or "").strip()
+    if upstream_level:
+        risk_level_display = (
+            f"{upstream_level}（存在司法暴露，需人工核验；不作低风险背书）"
+            if judicial_exposure and not any(
+                token in upstream_level for token in ("高", "严重")
+            )
+            else upstream_level
+        )
+    else:
+        risk_level_display = (
+            "上游未返回风险等级（司法暴露需人工核验）"
+            if judicial_exposure
+            else "上游未返回风险等级"
+        )
     verdict["key_concerns"] = [
         concern
         for concern in verdict.get("key_concerns", [])
@@ -469,7 +745,7 @@ def build_direct_payload(
             "key": "fp_hearings",
             "title": "开庭公告明细",
             "kind": "table",
-            "note": f"报告总量 {_risk(data).get('court_hearings_total') if _risk(data).get('court_hearings_total') is not None else '未知'} 条（当前展示 {len(_hearing_rows(data))} 条）；保留上游案号/日期/主体用于人工去重，缺少案号或日期的记录无法逐案去重",
+            "note": _hearing_note(data, _hearing_rows(data)),
             "columns": [
                 ("案号", "案号"),
                 ("案由", "案由"),
@@ -690,4 +966,4 @@ def build_direct_payload(
             report["abstract"] += note
             report["summary"] += note
             report["caliber"]["limit"] += note
-    return report
+    return apply_content_review(report, evidence)

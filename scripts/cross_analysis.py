@@ -39,13 +39,14 @@ def source_ratio_percent(value: Any) -> Optional[Decimal]:
     text = str(value).strip()
     if not text or text in {"-", "—"}:
         return None
-    if "%" in text:
+    had_percent = "%" in text
+    if had_percent:
         text = text.replace("%", "").strip()
     try:
         number = Decimal(text)
     except InvalidOperation:
         return None
-    if number != 0 and abs(number) <= 1:
+    if not had_percent and number != 0 and abs(number) <= 1:
         number *= 100
     return number
 
@@ -961,7 +962,16 @@ def analyze(data: Mapping[str, Any]) -> Dict[str, Any]:
             {
                 "label": "招投标参与",
                 "value": str(bidding_total),
-                "hint": "市场活跃度信号",
+                "hint": "招投标公开记录数，不等同中标次数",
+            }
+        )
+    win_count = _i(_bidding(data).get("winbidCount"))
+    if win_count is not None:
+        metrics.append(
+            {
+                "label": "中标记录",
+                "value": str(win_count),
+                "hint": "中标标的统计合计；不代表收入、履约或市场份额",
             }
         )
     # 舆情指标
@@ -973,12 +983,20 @@ def analyze(data: Mapping[str, Any]) -> Dict[str, Any]:
     )
     if total_news:
         pos = _i(sentiment_stats.get("positive")) or 0
+        neg = _i(sentiment_stats.get("negative")) or 0
         pos_pct = round(pos / total_news * 100) if total_news > 0 else 0
         metrics.append(
             {
                 "label": "舆情总数",
                 "value": str(total_news),
                 "hint": f"正面占比 {pos_pct}%",
+            }
+        )
+        metrics.append(
+            {
+                "label": "负面舆情",
+                "value": str(neg),
+                "hint": "负面情感条数；需复核样本、时间和相关性，不作法律定性",
             }
         )
     # 风险计数指标
