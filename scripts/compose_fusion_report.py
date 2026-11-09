@@ -32,6 +32,7 @@ import sys
 from typing import Any, Dict
 
 from common import json_dumps, print_json
+from semantic_review import prepare_draft
 from render_report import render_html, render_markdown, html_to_pdf
 
 SKILLS_ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -39,6 +40,8 @@ SKILLS_ROOT = pathlib.Path(__file__).resolve().parents[2]
 
 def _emit(payload: Dict[str, Any], args: argparse.Namespace) -> None:
     """Write JSON + optional HTML + Markdown output."""
+    payload = prepare_draft(payload)
+
     if args.output:
         out = pathlib.Path(args.output).expanduser()
         out.parent.mkdir(parents=True, exist_ok=True)
